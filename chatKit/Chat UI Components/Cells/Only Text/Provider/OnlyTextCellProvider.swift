@@ -1,0 +1,58 @@
+//
+//  OnlyTextCellProvider.swift
+//  chatKit
+//
+//  Created by Nijat Muzaffarli on 2022/08/03.
+//
+
+import CollectionKit
+import Foundation
+import UIKit
+
+extension OnlyTextChatCellView: CellViewProvider, CellSizeProvider {
+    typealias CellData = MessageModel
+
+    // MARK: - View Source Provider
+
+    static var viewSourceprovider: ViewSource<MessageModel, OnlyTextChatCellView> {
+        // Collection View Source
+        return ClosureViewSource(viewGenerator: { _, _ -> OnlyTextChatCellView in
+            OnlyTextChatCellView(viewModel: .init())
+        }, viewUpdater: { (cell: OnlyTextChatCellView, data: MessageModel, _: Int) in
+            // Set Model
+            cell.viewModel.cellModel = data
+        })
+    }
+
+    // MARK: - Size Source Provider
+
+    static var sizeSourceProvider: SizeSource<CellData> {
+        return OnlyTextChatCellSizeSource()
+    }
+}
+
+// MARK: - FAQCellViewCachedSizeSource
+
+class OnlyTextChatCellSizeSource: SizeSource<MessageModel> {
+    // Size Caches
+    var sizeCaches: [MessageModel: CGFloat]! = [:]
+    let cell = OnlyTextChatCellView(viewModel: .init())
+
+    // MARK: - Size
+
+    override func size(at _: Int, data: MessageModel, collectionSize: CGSize) -> CGSize {
+        // Check If Cahce Is Exist
+        if sizeCaches[data] != nil {
+            return .init(width: collectionSize.width, height: sizeCaches[data]!)
+            // Calculate Size
+        } else {
+            cell.viewModel.cellModel = data
+            // Calculate New Size
+            let size = cell.sizeThatFits(.init(width: collectionSize.width, height: .greatestFiniteMagnitude))
+            // Set Cache
+            sizeCaches[data] = size.height
+            // Return Calculated size
+            return .init(width: collectionSize.width, height: sizeCaches[data]!)
+        }
+    }
+}

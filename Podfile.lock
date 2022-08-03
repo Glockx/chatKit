@@ -1,0 +1,22 @@
+PODS:
+  - CollectionKit (2.4.0):
+    - CollectionKit/Core (= 2.4.0)
+  - CollectionKit/Core (2.4.0)
+  - Reveal-SDK (38)
+
+DEPENDENCIES:
+  - CollectionKit
+  - Reveal-SDK
+
+SPEC REPOS:
+  trunk:
+    - CollectionKit
+    - Reveal-SDK
+
+SPEC CHECKSUMS:
+  CollectionKit: 8f01e7629185bb81072c4aa734d105df5c2d1c8b
+  Reveal-SDK: 685ccb1f3cdb0b1d2926ec0b29f0eeb43d2240a3
+
+PODFILE CHECKSUM: cd88bc11626f4de2f5be8a8c6b5d4565634d8749
+
+COCOAPODS: 1.11.3
