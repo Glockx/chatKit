@@ -14,7 +14,7 @@ final class OnlyTextChatCellView: UIView {
 
     // Date Label
     var dateLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 14, weight: .regular)
+        $0.font = .systemFont(ofSize: 11, weight: .medium)
         $0.textAlignment = .right
         $0.textColor = .white
         $0.lineBreakMode = .byTruncatingTail
@@ -24,11 +24,19 @@ final class OnlyTextChatCellView: UIView {
     // Text Label
     var textLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .regular)
-        $0.textAlignment = .right
+        $0.textAlignment = .left
         $0.textColor = .white
-        $0.lineBreakMode = .byTruncatingTail
+        $0.lineBreakMode = .byWordWrapping
         $0.numberOfLines = 0
         $0.text = ""
+    }
+
+    // Container View
+    var containerView = UIView().then {
+        // Background Color
+        $0.backgroundColor = .systemGreen
+        // Corner Radius
+        $0.cornerRadius = 10
     }
 
     // MARK: - Variables
@@ -38,6 +46,9 @@ final class OnlyTextChatCellView: UIView {
 
     // Cancellables
     var cancellables = Set<AnyCancellable>()
+
+    /// Container View Wrapping Inset
+    var containerViewWrappingInset = PEdgeInsets(top: 10, left: 10, bottom: 5, right: 10)
 
     // MARK: - Init
 
@@ -66,33 +77,21 @@ final class OnlyTextChatCellView: UIView {
     // MARK: - configureView
 
     func configureView() {
-        // Background Color
-        backgroundColor = .systemGreen
-        // Corner Radius
-        cornerRadius = 5
         // Add Subviews
-        addSubview(dateLabel)
-        addSubview(textLabel)
+        addSubview(containerView)
+        containerView.addSubview(dateLabel)
+        containerView.addSubview(textLabel)
     }
 
     // MARK: - Bind Values
 
-    func bindValues() {
-        viewModel.$cellModel
-            .compactMap { $0 }
-            .sink { [weak self] model in
-                guard let self = self else { return }
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else { return }
-                    // Set Details
-                    self.setDetails(model: model)
-                }
-            }.store(in: &cancellables)
-    }
+    func bindValues() {}
 
-    // MARK: - Set Details
+    // MARK: - Set Details Of Message Model
 
     func setDetails(model: MessageModel) {
+        // Set View Model
+        viewModel.cellModel = model
         // Set Text
         switch model.messageType {
         case let .onlyText(text: text):
@@ -103,6 +102,19 @@ final class OnlyTextChatCellView: UIView {
         // Set Time String
         if let timeString = CDateFormatter.shared.formatToMessageStyle(timeInterval: model.creationDate) {
             dateLabel.text = timeString
+        }
+
+        switch model.owner {
+        case .owner:
+            textLabel.textAlignment = .left
+            dateLabel.textAlignment = .right
+            containerView.backgroundColor = .systemGreen
+        case .opponent:
+            textLabel.textAlignment = .left
+            dateLabel.textAlignment = .left
+            containerView.backgroundColor = .systemPink
+        case .system:
+            textLabel.textAlignment = .center
         }
 
         // Layout View
@@ -120,17 +132,42 @@ final class OnlyTextChatCellView: UIView {
     // MARK: - Layout
 
     func layout() {
-        // Text Label
-        textLabel.pin.top(5).width(60%).sizeToFit(.width)
-        // Date Label
-        dateLabel.pin.below(of: textLabel).right(5).sizeToFit(.content)
+        // Container View
+        containerView.pin.top().width(65%)
+        // Switch Over Owner Mode
+        switch viewModel.cellModel.owner {
+        // If Owner is My self
+        case .owner:
+
+            // Text Label
+            textLabel.pin.top().horizontally().justify(.right).marginRight(7).sizeToFit(.widthFlexible)
+            // Date Label
+            dateLabel.pin.below(of: textLabel, aligned: .right).marginTop(5).sizeToFit(.content)
+            // Container View Wrap Content
+            containerView.pin.wrapContent(.all, padding: containerViewWrappingInset).right(10)
+
+        case .opponent:
+
+            // Text Label
+            textLabel.pin.top().horizontally().justify(.right).marginRight(7).sizeToFit(.widthFlexible)
+            // Date Label
+            dateLabel.pin.below(of: textLabel).right().marginTop(5).sizeToFit()
+            // Container View Wrap Content
+            containerView.pin.wrapContent(.all, padding: containerViewWrappingInset).left(10)
+
+        case .system:
+            break
+        }
     }
 
     // MARK: - Layout
 
     override func sizeThatFits(_ size: CGSize) -> CGSize {
+        // Calculated size
         let size = autoSizeThatFits(size, layoutClosure: layout)
-        print(size)
+        // Container View Corner Radius
+        containerView.cornerRadius = size.height / 2.2
+        // return To Calculated Size
         return size
     }
 }

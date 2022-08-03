@@ -20,7 +20,7 @@ extension OnlyTextChatCellView: CellViewProvider, CellSizeProvider {
             OnlyTextChatCellView(viewModel: .init())
         }, viewUpdater: { (cell: OnlyTextChatCellView, data: MessageModel, _: Int) in
             // Set Model
-            cell.viewModel.cellModel = data
+            cell.setDetails(model: data)
         })
     }
 
@@ -46,7 +46,8 @@ class OnlyTextChatCellSizeSource: SizeSource<MessageModel> {
             return .init(width: collectionSize.width, height: sizeCaches[data]!)
             // Calculate Size
         } else {
-            cell.viewModel.cellModel = data
+            // Set Details
+            cell.setDetails(model: data)
             // Calculate New Size
             let size = cell.sizeThatFits(.init(width: collectionSize.width, height: .greatestFiniteMagnitude))
             // Set Cache

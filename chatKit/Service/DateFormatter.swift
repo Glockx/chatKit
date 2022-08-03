@@ -15,7 +15,7 @@ class CDateFormatter {
 
     /// Date Formatter
     var dateFormatter = DateFormatter().then {
-        $0.dateFormat = "HH:mm a"
+        $0.dateFormat = "hh:mm a"
     }
 
     // MARK: - Init

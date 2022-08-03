@@ -129,6 +129,7 @@ class ChatTextingBarView: UIView, UITextViewDelegate {
 
             }.store(in: &cancellables)
 
+        // Observe The Text View Height
         viewModel.$textViewHeight
             .receive(on: RunLoop.main)
             .dropFirst()
@@ -145,7 +146,8 @@ class ChatTextingBarView: UIView, UITextViewDelegate {
     // MARK: - Send Message
 
     @objc func sendMessage() {
-        viewModel.chatMainModel.sendMessage(text: textView.text)
+        // Send A Simple Text Message
+        viewModel.chatMainModel.sendMessage(text: textView.text.trimmingCharacters(in: .whitespacesAndNewlines))
     }
 
     // MARK: - layoutSubviews

@@ -16,7 +16,7 @@ class ChatMainViewModel {
 
     /// Collection Main Data Source
     var collectionDataSource = ArrayDataSource(data: [MessageModel]()) { _, data in
-        data.id
+        "\(data.hashValue)"
     }
 
     /// Provider Size Source
@@ -68,7 +68,7 @@ class ChatMainViewModel {
 
     init() {
         // Collection Provider
-        collectionProvider = BasicProvider(dataSource: collectionDataSource, viewSource: collectionViewSource, sizeSource: collectionSizeSource, layout: FlowLayout(spacing: 5), tapHandler: tapHandler)
+        collectionProvider = BasicProvider(dataSource: collectionDataSource, viewSource: collectionViewSource, sizeSource: collectionSizeSource, layout: FlowLayout(spacing: 5).inset(by: .init(top: 10, left: 0, bottom: 10, right: 0)), tapHandler: tapHandler)
         // Bind Items
         bindItems()
     }
@@ -84,6 +84,8 @@ class ChatMainViewModel {
                 // Set Data
                 self.collectionDataSource.data = data
                 self.collectionProvider.reloadData()
+                // Scroll To Bottom After Adding Message
+                self.collectionProvider.collectionView?.scrollTo(edge: .bottom, animated: true)
             }.store(in: &cancellables)
     }
 
@@ -92,6 +94,16 @@ class ChatMainViewModel {
     func sendMessage(text: String) {
         let model = MessageModel(id: UUID().uuidString, owner: .owner(owner: .init(id: "7541", username: "nicat")), messageType: .onlyText(text: text), creationDate: Date().timeIntervalSince1970, updaetDate: nil)
 
+        // Add My Message
         messageData.append(model)
+
+        // Add Opponent
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+            guard let self = self else { return }
+            var item = model
+            item.messageType = .onlyText(text: UUID().uuidString)
+            item.owner = .opponent(owner: .init(id: "854", username: "frog"))
+            self.messageData.append(item)
+        }
     }
 }
