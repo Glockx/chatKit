@@ -37,6 +37,8 @@ final class OnlyTextChatCellView: UIView {
         $0.backgroundColor = .systemGreen
         // Corner Radius
         $0.cornerRadius = 10
+        // Set clipToBounds To False, For Shadow
+        $0.clipsToBounds = false
     }
 
     // MARK: - Variables
@@ -127,6 +129,9 @@ final class OnlyTextChatCellView: UIView {
         super.layoutSubviews()
         // Layout
         layout()
+
+        // Container View Corner Radius
+        containerView.cornerRadiusWithShadow(cornerRadius: 12)
     }
 
     // MARK: - Layout
@@ -164,10 +169,6 @@ final class OnlyTextChatCellView: UIView {
 
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         // Calculated size
-        let size = autoSizeThatFits(size, layoutClosure: layout)
-        // Container View Corner Radius
-        containerView.cornerRadius = size.height / 2.2
-        // return To Calculated Size
-        return size
+        autoSizeThatFits(size, layoutClosure: layout)
     }
 }

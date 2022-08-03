@@ -36,7 +36,7 @@ class ChatTextingBarView: UIView, UITextViewDelegate {
     lazy var textView = UITextView().then { [weak self] in
         guard let self = self else { return }
         $0.textAlignment = .left
-        $0.font = .systemFont(ofSize: 15, weight: .medium)
+        $0.font = .systemFont(ofSize: 16, weight: .regular)
         $0.textColor = .init(hex: 0x171717)
         $0.applyCIBorderAndCornerRadius(cornerRadius: 15, borderWidth: 1, borderColor: .lightGray)
         $0.clipsToBounds = true

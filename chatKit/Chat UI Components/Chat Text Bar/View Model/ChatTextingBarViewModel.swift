@@ -16,10 +16,10 @@ class ChatTextingBarViewModel {
     var cancellables = Set<AnyCancellable>()
 
     /// Default Text View Height
-    var defaultTextviewHeight: CGFloat = 38
+    var defaultTextviewHeight: CGFloat = 40
 
     /// Text View Height
-    @Published var textViewHeight: CGFloat = 38
+    @Published var textViewHeight: CGFloat = 40
 
     /// Max Text View Height
     var maxTextViewHeight: CGFloat = 75.0

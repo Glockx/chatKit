@@ -72,6 +72,7 @@ extension UIView {
 
     // MARK: - Get Parent Controller Of UIView
 
+    /// Find The Parent Controller Of The UIView
     var parentViewController: UIViewController? {
         // Starts from next (As we know self is not a UIViewController).
         var parentResponder: UIResponder? = next
@@ -82,5 +83,27 @@ extension UIView {
             parentResponder = parentResponder?.next
         }
         return nil
+    }
+
+    // MARK: - Corner Radius and Shadow
+
+    /// Apply Corner Radius and Shadow
+    /// - Parameters:
+    ///   - cornerRadius: Corner Radius Of View
+    ///   - shadowOpacity: Shadow Oppacity Of View
+    ///   - shadowColor: Shadow Color Of View
+    ///   - shadowRadius: Shadow Radius Of View
+    ///   - shadowOffset: Shadow Offset Of View
+    func cornerRadiusWithShadow(cornerRadius: CGFloat = 10, shadowOpacity: Float = 0.1, shadowColor: UIColor = .black, shadowRadius: CGFloat = 3, shadowOffset: CGSize = .init(width: 0, height: 3)) {
+        layer.masksToBounds = false
+        self.cornerRadius = cornerRadius
+        layer.shadowColor = shadowColor.cgColor
+        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
+        layer.shadowOffset = shadowOffset
+        layer.shadowOpacity = shadowOpacity
+        layer.shadowRadius = shadowRadius
+        layer.masksToBounds = false
+        layer.shouldRasterize = true
+        layer.rasterizationScale = UIScreen.main.scale
     }
 }
