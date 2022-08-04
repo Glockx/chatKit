@@ -32,6 +32,13 @@
 		310173AE289A3E930011789C /* MediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310173AD289A3E930011789C /* MediaItem.swift */; };
 		310173B0289A414B0011789C /* MessageOwnerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310173AF289A414B0011789C /* MessageOwnerModel.swift */; };
 		310173B2289A41C30011789C /* MediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310173B1289A41C30011789C /* MediaType.swift */; };
+		313CBBD2289B5C6B009C9A3F /* OnlyEmojiChatCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313CBBD0289B5C6B009C9A3F /* OnlyEmojiChatCellView.swift */; };
+		313CBBD3289B5C6B009C9A3F /* OnlyEmojiChatCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313CBBD1289B5C6B009C9A3F /* OnlyEmojiChatCellViewModel.swift */; };
+		313CBBD9289B5DF5009C9A3F /* OnlyEmojiCellProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313CBBD8289B5DF5009C9A3F /* OnlyEmojiCellProvider.swift */; };
+		313CBBDB289B5FAA009C9A3F /* Character + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313CBBDA289B5FAA009C9A3F /* Character + Extensions.swift */; };
+		313CBBDD289B5FC6009C9A3F /* String + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313CBBDC289B5FC6009C9A3F /* String + Extensions.swift */; };
+		313CBBDF289B6018009C9A3F /* TextType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313CBBDE289B6018009C9A3F /* TextType.swift */; };
+		313CBBE1289B7AB7009C9A3F /* BrandColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313CBBE0289B7AB7009C9A3F /* BrandColors.swift */; };
 		31D4F587289A45D200FDD33F /* CGSize + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4F586289A45D200FDD33F /* CGSize + Extensions.swift */; };
 		31D4F58A289A494600FDD33F /* OnlyTextChatCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4F588289A494600FDD33F /* OnlyTextChatCellView.swift */; };
 		31D4F58B289A494600FDD33F /* OnlyTextChatCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4F589289A494600FDD33F /* OnlyTextChatCellViewModel.swift */; };
@@ -69,6 +76,13 @@
 		310173AD289A3E930011789C /* MediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItem.swift; sourceTree = "<group>"; };
 		310173AF289A414B0011789C /* MessageOwnerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageOwnerModel.swift; sourceTree = "<group>"; };
 		310173B1289A41C30011789C /* MediaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaType.swift; sourceTree = "<group>"; };
+		313CBBD0289B5C6B009C9A3F /* OnlyEmojiChatCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyEmojiChatCellView.swift; sourceTree = "<group>"; };
+		313CBBD1289B5C6B009C9A3F /* OnlyEmojiChatCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyEmojiChatCellViewModel.swift; sourceTree = "<group>"; };
+		313CBBD8289B5DF5009C9A3F /* OnlyEmojiCellProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyEmojiCellProvider.swift; sourceTree = "<group>"; };
+		313CBBDA289B5FAA009C9A3F /* Character + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character + Extensions.swift"; sourceTree = "<group>"; };
+		313CBBDC289B5FC6009C9A3F /* String + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extensions.swift"; sourceTree = "<group>"; };
+		313CBBDE289B6018009C9A3F /* TextType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextType.swift; sourceTree = "<group>"; };
+		313CBBE0289B7AB7009C9A3F /* BrandColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandColors.swift; sourceTree = "<group>"; };
 		31D4F586289A45D200FDD33F /* CGSize + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize + Extensions.swift"; sourceTree = "<group>"; };
 		31D4F588289A494600FDD33F /* OnlyTextChatCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyTextChatCellView.swift; sourceTree = "<group>"; };
 		31D4F589289A494600FDD33F /* OnlyTextChatCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyTextChatCellViewModel.swift; sourceTree = "<group>"; };
@@ -212,12 +226,14 @@
 		3101738F289A01C40011789C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				31D4F586289A45D200FDD33F /* CGSize + Extensions.swift */,
+				313CBBDA289B5FAA009C9A3F /* Character + Extensions.swift */,
 				31D4F594289A517100FDD33F /* CollectionKit */,
+				313CBBDC289B5FC6009C9A3F /* String + Extensions.swift */,
 				31017390289A01D70011789C /* UIColor + Extensions.swift */,
-				31017392289A02670011789C /* UIView + Extensions.swift */,
 				31017394289A078C0011789C /* UIResponder + Extensions.swift */,
 				31017396289A0B790011789C /* UITextView + Extensions.swift */,
-				31D4F586289A45D200FDD33F /* CGSize + Extensions.swift */,
+				31017392289A02670011789C /* UIView + Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -270,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				31017364289924D70011789C /* Assets.xcassets */,
+				313CBBE0289B7AB7009C9A3F /* BrandColors.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -280,6 +297,7 @@
 				3101739E289A33D40011789C /* MessageType.swift */,
 				310173A1289A342B0011789C /* MessageOwner.swift */,
 				310173B1289A41C30011789C /* MediaType.swift */,
+				313CBBDE289B6018009C9A3F /* TextType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -298,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				31D4F58C289A494900FDD33F /* Only Text */,
+				313CBBD4289B5C72009C9A3F /* Only Emoji */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -309,6 +328,40 @@
 				31D4F597289A52F200FDD33F /* CellSizeProvider.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		313CBBD4289B5C72009C9A3F /* Only Emoji */ = {
+			isa = PBXGroup;
+			children = (
+				313CBBD5289B5C7B009C9A3F /* View */,
+				313CBBD6289B5C80009C9A3F /* View Model */,
+				313CBBD7289B5DE5009C9A3F /* Provider */,
+			);
+			path = "Only Emoji";
+			sourceTree = "<group>";
+		};
+		313CBBD5289B5C7B009C9A3F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				313CBBD0289B5C6B009C9A3F /* OnlyEmojiChatCellView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		313CBBD6289B5C80009C9A3F /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				313CBBD1289B5C6B009C9A3F /* OnlyEmojiChatCellViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		313CBBD7289B5DE5009C9A3F /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				313CBBD8289B5DF5009C9A3F /* OnlyEmojiCellProvider.swift */,
+			);
+			path = Provider;
 			sourceTree = "<group>";
 		};
 		31D4F58C289A494900FDD33F /* Only Text */ = {
@@ -510,6 +563,7 @@
 				31017360289924D60011789C /* ViewController.swift in Sources */,
 				31D4F596289A517F00FDD33F /* ComposedSizeSource.swift in Sources */,
 				31D4F591289A4ACB00FDD33F /* OnlyTextCellProvider.swift in Sources */,
+				313CBBE1289B7AB7009C9A3F /* BrandColors.swift in Sources */,
 				31017397289A0B790011789C /* UITextView + Extensions.swift in Sources */,
 				3101735C289924D60011789C /* AppDelegate.swift in Sources */,
 				310173AE289A3E930011789C /* MediaItem.swift in Sources */,
@@ -517,18 +571,24 @@
 				3101737E289926780011789C /* ChatMainViewModel.swift in Sources */,
 				3101735E289924D60011789C /* SceneDelegate.swift in Sources */,
 				31017377289925680011789C /* MainView.swift in Sources */,
+				313CBBDD289B5FC6009C9A3F /* String + Extensions.swift in Sources */,
 				31D4F598289A52F200FDD33F /* CellSizeProvider.swift in Sources */,
 				31017393289A02670011789C /* UIView + Extensions.swift in Sources */,
 				310173A5289A379B0011789C /* MessageModel.swift in Sources */,
 				31D4F593289A502500FDD33F /* CellViewProvider.swift in Sources */,
+				313CBBD3289B5C6B009C9A3F /* OnlyEmojiChatCellViewModel.swift in Sources */,
 				31017376289925680011789C /* MainViewController.swift in Sources */,
 				31017391289A01D70011789C /* UIColor + Extensions.swift in Sources */,
+				313CBBD2289B5C6B009C9A3F /* OnlyEmojiChatCellView.swift in Sources */,
 				31017378289925680011789C /* MainViewModel.swift in Sources */,
 				310173A2289A342B0011789C /* MessageOwner.swift in Sources */,
 				31D4F59B289A559400FDD33F /* DateFormatter.swift in Sources */,
+				313CBBD9289B5DF5009C9A3F /* OnlyEmojiCellProvider.swift in Sources */,
 				3101739F289A33D40011789C /* MessageType.swift in Sources */,
+				313CBBDF289B6018009C9A3F /* TextType.swift in Sources */,
 				310173B2289A41C30011789C /* MediaType.swift in Sources */,
 				31017385289927390011789C /* ChatTextingBarView.swift in Sources */,
+				313CBBDB289B5FAA009C9A3F /* Character + Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,7 +744,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -715,7 +775,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

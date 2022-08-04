@@ -106,4 +106,28 @@ extension UIView {
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.main.scale
     }
+
+    // MARK: - Chat Corner
+
+    /// Corner Style Of Chat
+    func chatCorner(corner: CGFloat = 12, owner: MessageOwner) {
+        // Reset Corner
+        layer.maskedCorners = []
+        clipsToBounds = false
+
+        // Set Radius Of Corners
+        cornerRadius = corner
+
+        // Set Corner Sides
+        switch owner {
+        case .opponent:
+            layer.maskedCorners = corner > 0 ? [.layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner] : []
+            clipsToBounds = corner > 0
+        case .owner:
+            layer.maskedCorners = corner > 0 ? [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner] : []
+            clipsToBounds = corner > 0
+        case .system:
+            break
+        }
+    }
 }

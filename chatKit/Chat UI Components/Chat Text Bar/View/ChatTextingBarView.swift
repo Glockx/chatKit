@@ -15,7 +15,7 @@ class ChatTextingBarView: UIView, UITextViewDelegate {
 
     // Add Button
     var addButton = UIButton().then {
-        $0.tintColor = .systemBlue
+        $0.tintColor = .brandMainBlue
         var config = UIImage.SymbolConfiguration(font: .systemFont(ofSize: 20, weight: .regular), scale: .large)
         var image = UIImage(systemName: "plus", withConfiguration: config)
         $0.setImage(image, for: .normal)
@@ -24,7 +24,7 @@ class ChatTextingBarView: UIView, UITextViewDelegate {
 
     // Send Button
     var sendButton = UIButton().then {
-        $0.tintColor = .systemGreen
+        $0.tintColor = .brandMainBlue
         var config = UIImage.SymbolConfiguration(font: .systemFont(ofSize: 20, weight: .regular), scale: .large)
         var image = UIImage(systemName: "paperplane.circle.fill", withConfiguration: config)
         $0.setImage(image, for: .normal)
@@ -41,7 +41,6 @@ class ChatTextingBarView: UIView, UITextViewDelegate {
         $0.applyCIBorderAndCornerRadius(cornerRadius: 15, borderWidth: 1, borderColor: .lightGray)
         $0.clipsToBounds = true
         $0.textContainerInset = .init(top: 10, left: 5, bottom: 10, right: 5)
-        $0.autocorrectionType = .no
         $0.autocapitalizationType = .none
         $0.delegate = self
     }
@@ -107,7 +106,6 @@ class ChatTextingBarView: UIView, UITextViewDelegate {
             .removeDuplicates()
             .sink { [weak self] text in
                 guard let self = self else { return }
-
                 // Check If Text Is Empty
                 if text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                     // Disable Send Button
@@ -146,8 +144,24 @@ class ChatTextingBarView: UIView, UITextViewDelegate {
     // MARK: - Send Message
 
     @objc func sendMessage() {
-        // Send A Simple Text Message
-        viewModel.chatMainModel.sendMessage(text: textView.text.trimmingCharacters(in: .whitespacesAndNewlines))
+        // MARK: - Emoji Only
+
+        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).containsOnlyEmoji {
+            // Send A Simple Text Message
+            viewModel.chatMainModel.sendMessage(text: textView.text.trimmingCharacters(in: .whitespacesAndNewlines), textType: .onlyEmoji)
+        } else {
+            // MARK: - Text Only
+
+            // Send A Simple Text Message
+            viewModel.chatMainModel.sendMessage(text: textView.text.trimmingCharacters(in: .whitespacesAndNewlines))
+        }
+
+        // Clear Text
+        textView.text.removeAll()
+        // Disable Send Button
+        sendButton.isEnabled = false
+        // Restore Text View Size
+        viewModel.textViewHeight = viewModel.defaultTextviewHeight
     }
 
     // MARK: - layoutSubviews

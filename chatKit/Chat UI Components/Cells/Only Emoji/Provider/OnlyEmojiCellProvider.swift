@@ -1,24 +1,23 @@
 //
-//  OnlyTextCellProvider.swift
+//  OnlyEmojiCellProvider.swift
 //  chatKit
 //
-//  Created by Nijat Muzaffarli on 2022/08/03.
+//  Created by Nijat Muzaffarli on 2022/08/04.
 //
 
 import CollectionKit
 import Foundation
-import UIKit
 
-extension OnlyTextChatCellView: CellViewProvider, CellSizeProvider {
+extension OnlyEmojiChatCellView: CellViewProvider, CellSizeProvider {
     typealias CellData = MessageModel
 
     // MARK: - View Source Provider
 
-    static var viewSourceProvider: ViewSource<MessageModel, OnlyTextChatCellView> {
+    static var viewSourceProvider: ViewSource<MessageModel, OnlyEmojiChatCellView> {
         // Collection View Source
-        return ClosureViewSource(viewGenerator: { _, _ -> OnlyTextChatCellView in
-            OnlyTextChatCellView(viewModel: .init())
-        }, viewUpdater: { (cell: OnlyTextChatCellView, data: MessageModel, _: Int) in
+        return ClosureViewSource(viewGenerator: { _, _ -> OnlyEmojiChatCellView in
+            OnlyEmojiChatCellView(viewModel: .init())
+        }, viewUpdater: { (cell: OnlyEmojiChatCellView, data: MessageModel, _: Int) in
             // Set Model
             cell.setDetails(model: data)
         })
@@ -27,16 +26,16 @@ extension OnlyTextChatCellView: CellViewProvider, CellSizeProvider {
     // MARK: - Size Source Provider
 
     static var sizeSourceProvider: SizeSource<CellData> {
-        return OnlyTextChatCellSizeSource()
+        return OnlyEmojiChatCellSizeSource()
     }
 }
 
 // MARK: - FAQCellViewCachedSizeSource
 
-class OnlyTextChatCellSizeSource: SizeSource<MessageModel> {
+class OnlyEmojiChatCellSizeSource: SizeSource<MessageModel> {
     // Size Caches
     var sizeCaches: [MessageModel: CGFloat]! = [:]
-    let cell = OnlyTextChatCellView(viewModel: .init())
+    let cell = OnlyEmojiChatCellView(viewModel: .init())
 
     // MARK: - Size
 

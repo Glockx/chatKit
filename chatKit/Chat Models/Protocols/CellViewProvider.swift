@@ -10,5 +10,5 @@ import Foundation
 import UIKit
 
 protocol CellViewProvider: UIView {
-    static var viewSourceprovider: ViewSource<MessageModel, Self> { get }
+    static var viewSourceProvider: ViewSource<MessageModel, Self> { get }
 }

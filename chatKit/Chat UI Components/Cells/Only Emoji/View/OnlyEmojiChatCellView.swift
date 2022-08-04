@@ -1,15 +1,15 @@
 //
-//  OnlyTextChatCellView.swift
+//  OnlyEmojiChatCellView.swift
 //  chatKit
 //
-//  Created by Nijat Muzaffarli on 2022/08/03.
+//  Created by Nijat Muzaffarli on 2022/08/04.
 //
 
 import Combine
 import PinLayout
 import UIKit
 
-final class OnlyTextChatCellView: UIView {
+final class OnlyEmojiChatCellView: UIView {
     // MARK: - Views
 
     // Date Label
@@ -24,7 +24,7 @@ final class OnlyTextChatCellView: UIView {
     // Text Label
     var textLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 14, weight: .regular)
-        $0.textAlignment = .left
+        $0.textAlignment = .center
         $0.textColor = .white
         $0.lineBreakMode = .byWordWrapping
         $0.numberOfLines = 0
@@ -34,21 +34,23 @@ final class OnlyTextChatCellView: UIView {
     // Container View
     var containerView = UIView().then {
         // Background Color
-        $0.backgroundColor = .brandMainBlue
+        $0.backgroundColor = .systemGreen
+        // Corner Radius
+        $0.cornerRadius = 10
         // Set clipToBounds To False, For Shadow
         $0.clipsToBounds = false
     }
 
+    /// Container View Wrapping Inset
+    var containerViewWrappingInset = PEdgeInsets(top: 10, left: 10, bottom: 5, right: 10)
+
     // MARK: - Variables
 
     // View Model
-    var viewModel: OnlyTextChatCellViewModel!
+    var viewModel: OnlyEmojiChatCellViewModel!
 
     // Cancellables
     var cancellables = Set<AnyCancellable>()
-
-    /// Container View Wrapping Inset
-    var containerViewWrappingInset = PEdgeInsets(top: 10, left: 10, bottom: 5, right: 10)
 
     // MARK: - Init
 
@@ -61,7 +63,7 @@ final class OnlyTextChatCellView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    convenience init(viewModel: OnlyTextChatCellViewModel) {
+    convenience init(viewModel: OnlyEmojiChatCellViewModel) {
         self.init(frame: .zero)
 
         // Set Model
@@ -93,10 +95,25 @@ final class OnlyTextChatCellView: UIView {
         // Set View Model
         viewModel.cellModel = model
 
-        // Set Text
         switch model.messageType {
-        case let .onlyText(text: text):
+        case let .emoji(text: text):
+            // Set Text
             textLabel.text = text
+
+            // Set Emoji Count
+            viewModel.emojiCount = text.count
+
+            // Set Font Size According Count Of Emoji
+            switch text.count {
+            case 1:
+                textLabel.font = .systemFont(ofSize: 35, weight: .regular)
+            case 2:
+                textLabel.font = .systemFont(ofSize: 32, weight: .regular)
+            case 3:
+                textLabel.font = .systemFont(ofSize: 29, weight: .regular)
+            default:
+                textLabel.font = .systemFont(ofSize: 14, weight: .regular)
+            }
         default: break
         }
 
@@ -106,35 +123,28 @@ final class OnlyTextChatCellView: UIView {
         }
 
         // Set Cell Style
-        setCellStyle(owner: model.owner)
+        setStyle(owner: model.owner)
 
         // Layout View
         layoutView()
     }
 
-    // MARK: - Set Cell Style
+    // MARK: - Set Style
 
-    /// Set Cell Style
-    func setCellStyle(owner: MessageOwner) {
+    func setStyle(owner: MessageOwner) {
         switch owner {
-        case .opponent:
-            // Text Label
-            textLabel.textAlignment = .left
-            textLabel.textColor = .chatDarkBlueText
-            // Date Label
-            dateLabel.textAlignment = .left
-            dateLabel.textColor = .chatDarkBlueText
-            // Container View
-            containerView.backgroundColor = .brandMainGray
         case .owner:
-            // Text Label
-            textLabel.textAlignment = .left
-            textLabel.textColor = .white
             // Date Label
             dateLabel.textAlignment = .right
             dateLabel.textColor = .white
             // Container View
             containerView.backgroundColor = .brandMainBlue
+        case .opponent:
+            // Date Label
+            dateLabel.textAlignment = .left
+            dateLabel.textColor = .chatDarkBlueText
+            // Container View
+            containerView.backgroundColor = .brandMainGray
         case .system:
             textLabel.textAlignment = .center
         }
@@ -157,26 +167,27 @@ final class OnlyTextChatCellView: UIView {
         // Container View
         containerView.pin.top().width(65%)
         // Switch Over Owner Mode
+        switch viewModel.emojiCount {
+        case 1:
+            // Text Label
+            textLabel.pin.top().horizontally().justify(.center).sizeToFit(.widthFlexible)
+            // Date Label
+            dateLabel.pin.below(of: textLabel).hCenter().marginTop(5).sizeToFit(.content)
+        default:
+            // Text Label
+            textLabel.pin.top().horizontally().justify(.right).sizeToFit(.widthFlexible)
+            // Date Label
+            dateLabel.pin.below(of: textLabel).right().marginTop(5).sizeToFit(.content)
+        }
+
         switch viewModel.cellModel.owner {
         // If Owner is My self
         case .owner:
-
-            // Text Label
-            textLabel.pin.top().horizontally().justify(.right).marginRight(7).sizeToFit(.widthFlexible)
-            // Date Label
-            dateLabel.pin.below(of: textLabel, aligned: .right).marginTop(5).sizeToFit(.content)
             // Container View Wrap Content
             containerView.pin.wrapContent(.all, padding: containerViewWrappingInset).right(10)
-
         case .opponent:
-
-            // Text Label
-            textLabel.pin.top().horizontally().justify(.right).marginRight(7).sizeToFit(.widthFlexible)
-            // Date Label
-            dateLabel.pin.below(of: textLabel).right().marginTop(5).sizeToFit()
             // Container View Wrap Content
             containerView.pin.wrapContent(.all, padding: containerViewWrappingInset).left(10)
-
         case .system:
             break
         }
