@@ -16,10 +16,10 @@ class ChatMainView: UIView {
     // Collection View
     lazy var collectionView = CollectionView().then { [weak self] in
         guard let self = self else { return }
-        $0.keyboardDismissMode = .interactive
+        $0.keyboardDismissMode = .onDrag
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tappedOnCollection))
-        tapGesture.cancelsTouchesInView = false
-        $0.addGestureRecognizer(tapGesture)
+        // Add Target To Collection View's Tap Gesture For Dismissing Keyboard.
+        $0.tapGestureRecognizer.addTarget(self, action: #selector(tappedOnCollection))
     }
 
     // Text Field
@@ -127,6 +127,7 @@ class ChatMainView: UIView {
     // MARK: - User Tapped On Collection
 
     @objc func tappedOnCollection() {
+        print("tapped")
         endEditing(true)
     }
 

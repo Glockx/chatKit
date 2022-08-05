@@ -32,11 +32,16 @@ final class OnlyTextChatCellView: UIView {
     }
 
     // Container View
-    var containerView = UIView().then {
+    lazy var containerView = UIView().then { [weak self] in
+        guard let self = self else { return }
         // Background Color
         $0.backgroundColor = .brandMainBlue
         // Set clipToBounds To False, For Shadow
         $0.clipsToBounds = false
+        // Add Context Menu To Cell
+        $0.isUserInteractionEnabled = true
+        let interaction = UIContextMenuInteraction(delegate: viewModel)
+        $0.addInteraction(interaction)
     }
 
     // MARK: - Variables

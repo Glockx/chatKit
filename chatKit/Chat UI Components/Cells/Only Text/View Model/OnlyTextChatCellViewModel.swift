@@ -7,8 +7,9 @@
 
 import Combine
 import Foundation
+import UIKit
 
-class OnlyTextChatCellViewModel {
+class OnlyTextChatCellViewModel: NSObject, UIContextMenuInteractionDelegate {
     // MARK: - Variables
 
     // Cancellables
@@ -19,7 +20,8 @@ class OnlyTextChatCellViewModel {
 
     // MARK: - INIT
 
-    init() {
+    override init() {
+        super.init()
         // Bind Items
         bindItems()
     }
@@ -27,4 +29,15 @@ class OnlyTextChatCellViewModel {
     // MARK: - Bind Items
 
     func bindItems() {}
+
+    // MARK: - contextMenuInteraction
+
+    func contextMenuInteraction(_: UIContextMenuInteraction, configurationForMenuAtLocation _: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil,
+                                          previewProvider: nil,
+                                          actionProvider: { _ in
+                                              UIMenu(title: "", children: [])
+
+                                          })
+    }
 }

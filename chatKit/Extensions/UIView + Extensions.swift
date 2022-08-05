@@ -114,7 +114,8 @@ extension UIView {
         // Reset Corner
         layer.maskedCorners = []
         clipsToBounds = false
-
+        // Layer Corner Curve Style
+        layer.cornerCurve = .continuous
         // Set Radius Of Corners
         cornerRadius = corner
 

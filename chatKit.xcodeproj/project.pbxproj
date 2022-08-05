@@ -39,6 +39,7 @@
 		313CBBDD289B5FC6009C9A3F /* String + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313CBBDC289B5FC6009C9A3F /* String + Extensions.swift */; };
 		313CBBDF289B6018009C9A3F /* TextType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313CBBDE289B6018009C9A3F /* TextType.swift */; };
 		313CBBE1289B7AB7009C9A3F /* BrandColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313CBBE0289B7AB7009C9A3F /* BrandColors.swift */; };
+		314200C8289B8FFA00750B9E /* ChatLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314200C7289B8FFA00750B9E /* ChatLayout.swift */; };
 		31D4F587289A45D200FDD33F /* CGSize + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4F586289A45D200FDD33F /* CGSize + Extensions.swift */; };
 		31D4F58A289A494600FDD33F /* OnlyTextChatCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4F588289A494600FDD33F /* OnlyTextChatCellView.swift */; };
 		31D4F58B289A494600FDD33F /* OnlyTextChatCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4F589289A494600FDD33F /* OnlyTextChatCellViewModel.swift */; };
@@ -83,6 +84,7 @@
 		313CBBDC289B5FC6009C9A3F /* String + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extensions.swift"; sourceTree = "<group>"; };
 		313CBBDE289B6018009C9A3F /* TextType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextType.swift; sourceTree = "<group>"; };
 		313CBBE0289B7AB7009C9A3F /* BrandColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandColors.swift; sourceTree = "<group>"; };
+		314200C7289B8FFA00750B9E /* ChatLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLayout.swift; sourceTree = "<group>"; };
 		31D4F586289A45D200FDD33F /* CGSize + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize + Extensions.swift"; sourceTree = "<group>"; };
 		31D4F588289A494600FDD33F /* OnlyTextChatCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyTextChatCellView.swift; sourceTree = "<group>"; };
 		31D4F589289A494600FDD33F /* OnlyTextChatCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyTextChatCellViewModel.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				3101737F2899267B0011789C /* Chat Main View */,
 				310173822899271B0011789C /* Chat Text Bar */,
 				310173A6289A3B330011789C /* Cells */,
+				314200C9289CD1E200750B9E /* Chat Layout */,
 			);
 			path = "Chat UI Components";
 			sourceTree = "<group>";
@@ -362,6 +365,14 @@
 				313CBBD8289B5DF5009C9A3F /* OnlyEmojiCellProvider.swift */,
 			);
 			path = Provider;
+			sourceTree = "<group>";
+		};
+		314200C9289CD1E200750B9E /* Chat Layout */ = {
+			isa = PBXGroup;
+			children = (
+				314200C7289B8FFA00750B9E /* ChatLayout.swift */,
+			);
+			path = "Chat Layout";
 			sourceTree = "<group>";
 		};
 		31D4F58C289A494900FDD33F /* Only Text */ = {
@@ -563,6 +574,7 @@
 				31017360289924D60011789C /* ViewController.swift in Sources */,
 				31D4F596289A517F00FDD33F /* ComposedSizeSource.swift in Sources */,
 				31D4F591289A4ACB00FDD33F /* OnlyTextCellProvider.swift in Sources */,
+				314200C8289B8FFA00750B9E /* ChatLayout.swift in Sources */,
 				313CBBE1289B7AB7009C9A3F /* BrandColors.swift in Sources */,
 				31017397289A0B790011789C /* UITextView + Extensions.swift in Sources */,
 				3101735C289924D60011789C /* AppDelegate.swift in Sources */,

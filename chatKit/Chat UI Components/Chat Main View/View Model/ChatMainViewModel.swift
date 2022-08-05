@@ -68,7 +68,7 @@ class ChatMainViewModel {
 
     init() {
         // Collection Provider
-        collectionProvider = BasicProvider(dataSource: collectionDataSource, viewSource: collectionViewSource, sizeSource: collectionSizeSource, layout: FlowLayout(spacing: 10).insetVisibleFrame(by: .init(top: -250, left: 0, bottom: -250, right: 0)).inset(by: .init(top: 10, left: 0, bottom: 10, right: 0)), animator: SimpleAnimator(), tapHandler: tapHandler)
+        collectionProvider = BasicProvider(dataSource: collectionDataSource, viewSource: collectionViewSource, sizeSource: collectionSizeSource, layout: ChatMainLayout().insetVisibleFrame(by: .init(top: -250, left: 0, bottom: -250, right: 0)).inset(by: .init(top: 10, left: 0, bottom: 10, right: 0)), animator: SimpleAnimator(), tapHandler: tapHandler)
         // Bind Items
         bindItems()
     }
@@ -99,7 +99,7 @@ class ChatMainViewModel {
         messageData.append(model)
 
         // Add Opponent
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
             guard let self = self else { return }
             var item = model
             item.messageType = textType == .onlyEmoji ? .emoji(text: String(UnicodeScalar(Array(0x1F300 ... 0x1F3F0).randomElement()!)!)) : .onlyText(text: UUID().uuidString)
