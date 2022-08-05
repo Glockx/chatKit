@@ -16,7 +16,7 @@ A small project, intended to create a simple Chatting UI for iPhones.
   - Media and Text Message Type
   - Audio Type
 - Auto Growing Chat Box
-- Keyobard Handling
+- Keyboard Handling
 - Cell Recycling and Cell Size Caching
 - Simple and Performant
 - Clear Code Structure and Simple Documentation
