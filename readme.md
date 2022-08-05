@@ -4,7 +4,7 @@ A small project, intended to create a simple Chatting UI for iPhones.
 
 ## Demo
 
-![](https://i.imgur.com/SBZyAWh.png =250x250)
+![](https://i.imgur.com/SBZyAWh.png)
 
 ## Features
 
