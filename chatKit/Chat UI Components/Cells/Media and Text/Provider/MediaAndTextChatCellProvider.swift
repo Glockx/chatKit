@@ -1,5 +1,5 @@
 //
-//  OnlyMediaCellProvider.swift
+//  MediaAndTextChatCellProvider.swift
 //  chatKit
 //
 //  Created by Nijat Muzaffarli on 2022/08/05.
@@ -7,18 +7,17 @@
 
 import CollectionKit
 import Foundation
-import UIKit
 
-extension OnlyMediaChatCellView: CellViewProvider, CellSizeProvider {
+extension MediaAndTextChatCellView: CellViewProvider, CellSizeProvider {
     typealias CellData = MessageModel
 
     // MARK: - View Source Provider
 
-    static var viewSourceProvider: ViewSource<MessageModel, OnlyMediaChatCellView> {
+    static var viewSourceProvider: ViewSource<MessageModel, MediaAndTextChatCellView> {
         // Collection View Source
-        return ClosureViewSource(viewGenerator: { _, _ -> OnlyMediaChatCellView in
-            OnlyMediaChatCellView(viewModel: .init())
-        }, viewUpdater: { (cell: OnlyMediaChatCellView, data: MessageModel, _: Int) in
+        return ClosureViewSource(viewGenerator: { _, _ -> MediaAndTextChatCellView in
+            MediaAndTextChatCellView(viewModel: .init())
+        }, viewUpdater: { (cell: MediaAndTextChatCellView, data: MessageModel, _: Int) in
             // Set Model
             cell.setDetails(model: data)
         })
@@ -27,16 +26,16 @@ extension OnlyMediaChatCellView: CellViewProvider, CellSizeProvider {
     // MARK: - Size Source Provider
 
     static var sizeSourceProvider: SizeSource<CellData> {
-        return OnlyMediaChatCellSizeProvider()
+        return MediaAndTextChatCellSizeProvider()
     }
 }
 
 // MARK: - OnlyMediaChatCellSizeProvider
 
-class OnlyMediaChatCellSizeProvider: SizeSource<MessageModel> {
+class MediaAndTextChatCellSizeProvider: SizeSource<MessageModel> {
     // Size Caches
     var sizeCaches: [MessageModel: CGFloat]! = [:]
-    let cell = OnlyMediaChatCellView(viewModel: .init())
+    let cell = MediaAndTextChatCellView(viewModel: .init())
 
     // MARK: - Size
 

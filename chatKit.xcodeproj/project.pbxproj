@@ -45,6 +45,9 @@
 		314200D1289CF41A00750B9E /* OnlyMediaChatCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314200CF289CF41A00750B9E /* OnlyMediaChatCellViewModel.swift */; };
 		314200D7289CF54E00750B9E /* OnlyMediaCellProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314200D6289CF54E00750B9E /* OnlyMediaCellProvider.swift */; };
 		314200DA289CF74200750B9E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 314200D9289CF74200750B9E /* Kingfisher */; };
+		31833E76289D07D20090F023 /* MediaAndTextChatCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31833E74289D07D20090F023 /* MediaAndTextChatCellView.swift */; };
+		31833E77289D07D20090F023 /* MediaAndTextChatCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31833E75289D07D20090F023 /* MediaAndTextChatCellViewModel.swift */; };
+		31833E7A289D07FA0090F023 /* MediaAndTextChatCellProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31833E79289D07FA0090F023 /* MediaAndTextChatCellProvider.swift */; };
 		31D4F587289A45D200FDD33F /* CGSize + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4F586289A45D200FDD33F /* CGSize + Extensions.swift */; };
 		31D4F58A289A494600FDD33F /* OnlyTextChatCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4F588289A494600FDD33F /* OnlyTextChatCellView.swift */; };
 		31D4F58B289A494600FDD33F /* OnlyTextChatCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4F589289A494600FDD33F /* OnlyTextChatCellViewModel.swift */; };
@@ -94,6 +97,9 @@
 		314200CE289CF41A00750B9E /* OnlyMediaChatCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyMediaChatCellView.swift; sourceTree = "<group>"; };
 		314200CF289CF41A00750B9E /* OnlyMediaChatCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyMediaChatCellViewModel.swift; sourceTree = "<group>"; };
 		314200D6289CF54E00750B9E /* OnlyMediaCellProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyMediaCellProvider.swift; sourceTree = "<group>"; };
+		31833E74289D07D20090F023 /* MediaAndTextChatCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAndTextChatCellView.swift; sourceTree = "<group>"; };
+		31833E75289D07D20090F023 /* MediaAndTextChatCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAndTextChatCellViewModel.swift; sourceTree = "<group>"; };
+		31833E79289D07FA0090F023 /* MediaAndTextChatCellProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAndTextChatCellProvider.swift; sourceTree = "<group>"; };
 		31D4F586289A45D200FDD33F /* CGSize + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize + Extensions.swift"; sourceTree = "<group>"; };
 		31D4F588289A494600FDD33F /* OnlyTextChatCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyTextChatCellView.swift; sourceTree = "<group>"; };
 		31D4F589289A494600FDD33F /* OnlyTextChatCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyTextChatCellViewModel.swift; sourceTree = "<group>"; };
@@ -332,6 +338,7 @@
 				31D4F58C289A494900FDD33F /* Only Text */,
 				313CBBD4289B5C72009C9A3F /* Only Emoji */,
 				314200D2289CF42800750B9E /* Only Media */,
+				31833E71289D07AC0090F023 /* Media and Text */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -407,7 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				314200D3289CF44600750B9E /* View */,
-				314200D4289CF44C00750B9E /* View Media */,
+				314200D4289CF44C00750B9E /* View Model */,
 				314200D5289CF53D00750B9E /* Provider */,
 			);
 			path = "Only Media";
@@ -421,18 +428,52 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		314200D4289CF44C00750B9E /* View Media */ = {
+		314200D4289CF44C00750B9E /* View Model */ = {
 			isa = PBXGroup;
 			children = (
 				314200CF289CF41A00750B9E /* OnlyMediaChatCellViewModel.swift */,
 			);
-			path = "View Media";
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 		314200D5289CF53D00750B9E /* Provider */ = {
 			isa = PBXGroup;
 			children = (
 				314200D6289CF54E00750B9E /* OnlyMediaCellProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		31833E71289D07AC0090F023 /* Media and Text */ = {
+			isa = PBXGroup;
+			children = (
+				31833E72289D07B80090F023 /* View */,
+				31833E73289D07BB0090F023 /* View Model */,
+				31833E78289D07E00090F023 /* Provider */,
+			);
+			path = "Media and Text";
+			sourceTree = "<group>";
+		};
+		31833E72289D07B80090F023 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				31833E74289D07D20090F023 /* MediaAndTextChatCellView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		31833E73289D07BB0090F023 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				31833E75289D07D20090F023 /* MediaAndTextChatCellViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		31833E78289D07E00090F023 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				31833E79289D07FA0090F023 /* MediaAndTextChatCellProvider.swift */,
 			);
 			path = Provider;
 			sourceTree = "<group>";
@@ -659,6 +700,7 @@
 				31017376289925680011789C /* MainViewController.swift in Sources */,
 				31017391289A01D70011789C /* UIColor + Extensions.swift in Sources */,
 				313CBBD2289B5C6B009C9A3F /* OnlyEmojiChatCellView.swift in Sources */,
+				31833E77289D07D20090F023 /* MediaAndTextChatCellViewModel.swift in Sources */,
 				31017378289925680011789C /* MainViewModel.swift in Sources */,
 				310173A2289A342B0011789C /* MessageOwner.swift in Sources */,
 				31D4F59B289A559400FDD33F /* DateFormatter.swift in Sources */,
@@ -668,7 +710,9 @@
 				313CBBDF289B6018009C9A3F /* TextType.swift in Sources */,
 				310173B2289A41C30011789C /* MediaType.swift in Sources */,
 				31017385289927390011789C /* ChatTextingBarView.swift in Sources */,
+				31833E76289D07D20090F023 /* MediaAndTextChatCellView.swift in Sources */,
 				313CBBDB289B5FAA009C9A3F /* Character + Extensions.swift in Sources */,
+				31833E7A289D07FA0090F023 /* MediaAndTextChatCellProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -46,8 +46,16 @@ class ChatTextingBarViewModel {
         self.chatMainModel.sendOnlyVideoAction()
     }
 
+    /// Media And Text Action
+    lazy var mediaAndTextAction = UIAction(title: "Media And Text",
+                                           image: UIImage(systemName: "tray.2.fill")) { [weak self] _ in
+        guard let self = self else { return }
+        // Send Image Only
+        self.chatMainModel.sendMediaAndTextAction()
+    }
+
     // Media Menu
-    lazy var mediaMenu = UIMenu(title: "Media Items", identifier: .file, options: [], children: [onlyImageAction, onlyVideoAction])
+    lazy var mediaMenu = UIMenu(title: "Media Items", identifier: .file, options: [], children: [onlyImageAction, onlyVideoAction, mediaAndTextAction])
 
     // MARK: - INIT
 

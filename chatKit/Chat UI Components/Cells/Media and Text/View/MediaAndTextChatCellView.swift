@@ -1,16 +1,15 @@
 //
-//  OnlyMediaChatCellView.swift
+//  MediaAndTextChatCellView.swift
 //  chatKit
 //
 //  Created by Nijat Muzaffarli on 2022/08/05.
 //
 
 import Combine
-import Kingfisher
 import PinLayout
 import UIKit
 
-final class OnlyMediaChatCellView: UIView {
+final class MediaAndTextChatCellView: UIView {
     // MARK: - Views
 
     // Time Label
@@ -23,6 +22,16 @@ final class OnlyMediaChatCellView: UIView {
         $0.kf.indicatorType = .activity
         $0.cornerRadius = 7
         $0.backgroundColor = .lightGray.withAlphaComponent(0.5)
+    }
+
+    // Text Label
+    var textLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 14, weight: .regular)
+        $0.textAlignment = .left
+        $0.textColor = .white
+        $0.lineBreakMode = .byWordWrapping
+        $0.numberOfLines = 0
+        $0.text = ""
     }
 
     // Container View
@@ -55,7 +64,7 @@ final class OnlyMediaChatCellView: UIView {
     // MARK: - Variables
 
     // View Model
-    var viewModel: OnlyMediaChatCellViewModel!
+    var viewModel: MediaAndTextChatCellViewModel!
 
     // Cancellables
     var cancellables = Set<AnyCancellable>()
@@ -74,7 +83,7 @@ final class OnlyMediaChatCellView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    convenience init(viewModel: OnlyMediaChatCellViewModel) {
+    convenience init(viewModel: MediaAndTextChatCellViewModel) {
         self.init(frame: .zero)
 
         // Set Model
@@ -94,6 +103,7 @@ final class OnlyMediaChatCellView: UIView {
         addSubview(containerView)
         containerView.addSubview(imageView)
         containerView.addSubview(timeLabel)
+        containerView.addSubview(textLabel)
         containerView.addSubview(playButton)
     }
 
@@ -109,7 +119,7 @@ final class OnlyMediaChatCellView: UIView {
 
         // Set Text
         switch model.messageType {
-        case let .onlyMedia(media: mediaItem):
+        case let .mediaAndText(text: text, media: mediaItem):
             // Set Media Item
             viewModel.mediaItem = mediaItem
             // Get Thumbnail Image
@@ -117,6 +127,9 @@ final class OnlyMediaChatCellView: UIView {
                 // Set Image
                 imageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.3))], completionHandler: nil)
             }
+
+            // Set Text
+            textLabel.text = text
 
             // Check Media Type and Set Play Button State
             if mediaItem.mediaType == .image {
@@ -147,13 +160,19 @@ final class OnlyMediaChatCellView: UIView {
     func setCellStyle(owner: MessageOwner) {
         switch owner {
         case .opponent:
-            // Date Label
+            // Text Label
+            textLabel.textAlignment = .left
+            textLabel.textColor = .chatDarkBlueText
+            // Time Label
             timeLabel.textAlignment = .left
             timeLabel.textColor = .chatDarkBlueText
             // Container View
             containerView.backgroundColor = .brandMainGray
         case .owner:
-            // Date Label
+            // Text Label
+            textLabel.textAlignment = .right
+            textLabel.textColor = .white
+            // Time Label
             timeLabel.textAlignment = .right
             timeLabel.textColor = .white
             // Container View
@@ -188,8 +207,10 @@ final class OnlyMediaChatCellView: UIView {
             imageView.pin.top().horizontally().justify(.right).height(viewModel.mediaItem.size.height).maxHeight(150).width(viewModel.mediaItem.size.width).maxWidth(65%)
             // Play Button
             playButton.pin.center(to: imageView.anchor.center).sizeToFit()
+            // Text Label
+            textLabel.pin.below(of: imageView, aligned: .center).marginTop(5).width(of: imageView).sizeToFit(.width)
             // Date Label
-            timeLabel.pin.below(of: imageView, aligned: .right).marginTop(5).sizeToFit(.content)
+            timeLabel.pin.below(of: textLabel, aligned: .right).marginTop(5).sizeToFit(.content)
             // Container View Wrap Content
             containerView.pin.wrapContent(.all, padding: containerViewWrappingInset).right(10)
 
@@ -199,8 +220,10 @@ final class OnlyMediaChatCellView: UIView {
             imageView.pin.top().horizontally().justify(.right).height(viewModel.mediaItem.size.height).maxHeight(150).width(viewModel.mediaItem.size.width).maxWidth(65%)
             // Play Button
             playButton.pin.center(to: imageView.anchor.center).sizeToFit()
+            // Text Label
+            textLabel.pin.below(of: imageView, aligned: .center).marginTop(5).width(of: imageView).sizeToFit(.width)
             // Time Label
-            timeLabel.pin.below(of: imageView).right().marginTop(5).sizeToFit()
+            timeLabel.pin.below(of: textLabel).right().marginTop(5).sizeToFit()
             // Container View Wrap Content
             containerView.pin.wrapContent(.all, padding: containerViewWrappingInset).left(10)
 

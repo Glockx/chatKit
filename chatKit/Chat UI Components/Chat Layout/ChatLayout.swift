@@ -24,6 +24,8 @@ class ChatMainLayout: SimpleLayout {
     let onlyEmojiChatCellView = OnlyEmojiChatCellView(viewModel: .init())
     /// Only Media Chat Cell
     let onlyMediaChatCellView = OnlyMediaChatCellView(viewModel: .init())
+    /// Media and Text Chat Cell
+    let mediaAndTextChatCell = MediaAndTextChatCellView(viewModel: .init())
 
     // MARK: - simpleLayout
 
@@ -96,7 +98,14 @@ class ChatMainLayout: SimpleLayout {
             // Return Frame
             return frame
         case .mediaAndText:
-            return .null
+            // Set Cell Details
+            mediaAndTextChatCell.setDetails(model: model)
+            // Get Cell Size
+            let size = mediaAndTextChatCell.sizeThatFits(.init(width: collectionWidth, height: .greatestFiniteMagnitude))
+            // Crete New Frame From Cell Size
+            let frame = CGRect(x: 0, y: 0, width: collectionWidth, height: size.height)
+            // Return Frame
+            return frame
         case .audio:
             return .null
         case .emoji:

@@ -28,7 +28,7 @@ class ChatMainViewModel {
         case .onlyMedia:
             return OnlyMediaChatCellView.sizeSourceProvider
         case .mediaAndText:
-            return OnlyTextChatCellView.sizeSourceProvider
+            return MediaAndTextChatCellView.sizeSourceProvider
         case .audio:
             return OnlyTextChatCellView.sizeSourceProvider
         case .emoji:
@@ -44,7 +44,7 @@ class ChatMainViewModel {
         case .onlyMedia:
             return OnlyMediaChatCellView.viewSourceProvider
         case .mediaAndText:
-            return OnlyTextChatCellView.viewSourceProvider
+            return MediaAndTextChatCellView.viewSourceProvider
         case .audio:
             return OnlyTextChatCellView.viewSourceProvider
         case .emoji:
@@ -155,6 +155,34 @@ class ChatMainViewModel {
 
         // Create Message Model
         let messageModel = MessageModel(id: UUID().uuidString, owner: .owner(owner: .init(id: "7541", username: "nicat")), messageType: .onlyMedia(media: mediaAsset), creationDate: Date().timeIntervalSince1970, updaetDate: nil)
+
+        // Add Item To Data Source
+        messageData.append(messageModel)
+
+        // Send Mock Answer
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            guard let self = self else { return }
+            var item = messageModel
+            item.owner = .opponent(owner: .init(id: "854", username: "frog"))
+            self.messageData.append(item)
+        }
+    }
+
+    // MARK: - Add Media And Text Item
+
+    /// Add Media and Text Item
+    func sendMediaAndTextAction() {
+        // Item Seed
+        let itemSeed = UUID().uuidString
+
+        // Asset Size
+        let assetSize = CGSize(width: .random(in: 100 ... 1000), height: .random(in: 100 ... 1000))
+
+        // Create Media Asset
+        let mediaAsset = MediaItem(mediaType: .image, mediaURL: .init(string: "https://picsum.photos/seed/\(itemSeed)/\(assetSize.width)/\(assetSize.height)"), thumbnailURL: .init(string: .init("https://picsum.photos/seed/\(itemSeed)/1000/1000")), size: assetSize)
+
+        // Create Message Model
+        let messageModel = MessageModel(id: UUID().uuidString, owner: .owner(owner: .init(id: "7541", username: "nicat")), messageType: .mediaAndText(text: UUID().uuidString + UUID().uuidString + UUID().uuidString, media: mediaAsset), creationDate: Date().timeIntervalSince1970, updaetDate: nil)
 
         // Add Item To Data Source
         messageData.append(messageModel)
