@@ -8,6 +8,7 @@
 import CollectionKit
 import Combine
 import Foundation
+
 class ChatMainViewModel {
     // MARK: - CPI
 
@@ -22,15 +23,15 @@ class ChatMainViewModel {
     /// Provider Size Source
     lazy var collectionSizeSource = ComposedSizeSource<MessageModel>.init { data in
         switch data.messageType {
-        case let .onlyText(text: text):
+        case .onlyText:
             return OnlyTextChatCellView.sizeSourceProvider
-        case let .onlyMedia(media: media):
-            return OnlyTextChatCellView.sizeSourceProvider
-        case let .mediaAndText(text: text, media: media):
+        case .onlyMedia:
+            return OnlyMediaChatCellView.sizeSourceProvider
+        case .mediaAndText:
             return OnlyTextChatCellView.sizeSourceProvider
         case .audio:
             return OnlyTextChatCellView.sizeSourceProvider
-        case let .emoji(text: text):
+        case .emoji:
             return OnlyEmojiChatCellView.sizeSourceProvider
         }
     }
@@ -38,15 +39,15 @@ class ChatMainViewModel {
     /// Collection View Source
     lazy var collectionViewSource = ComposedViewSource<MessageModel>.init { data in
         switch data.messageType {
-        case let .onlyText(text: text):
+        case .onlyText:
             return OnlyTextChatCellView.viewSourceProvider
-        case let .onlyMedia(media: media):
-            return OnlyTextChatCellView.viewSourceProvider
-        case let .mediaAndText(text: text, media: media):
+        case .onlyMedia:
+            return OnlyMediaChatCellView.viewSourceProvider
+        case .mediaAndText:
             return OnlyTextChatCellView.viewSourceProvider
         case .audio:
             return OnlyTextChatCellView.viewSourceProvider
-        case let .emoji(text: text):
+        case .emoji:
             return OnlyEmojiChatCellView.viewSourceProvider
         }
     }
@@ -63,6 +64,9 @@ class ChatMainViewModel {
 
     /// The main data source of chat collection view.
     @Published var messageData = [MessageModel]()
+
+    /// Parent Controller Of View Model
+    weak var parentController: UIViewController!
 
     // MARK: - INIT
 
@@ -103,6 +107,34 @@ class ChatMainViewModel {
             guard let self = self else { return }
             var item = model
             item.messageType = textType == .onlyEmoji ? .emoji(text: String(UnicodeScalar(Array(0x1F300 ... 0x1F3F0).randomElement()!)!)) : .onlyText(text: UUID().uuidString)
+            item.owner = .opponent(owner: .init(id: "854", username: "frog"))
+            self.messageData.append(item)
+        }
+    }
+
+    // MARK: - Add Photo Item
+
+    /// Add Random Photo
+    func sendMediaItem() {
+        // Item Seed
+        let itemSeed = UUID().uuidString
+
+        // Asset Size
+        let assetSize = CGSize(width: .random(in: 100 ... 1000), height: .random(in: 100 ... 1000))
+
+        // Create Media Asset
+        let mediaAsset = MediaItem(mediaType: .image, mediaURL: .init(string: "https://picsum.photos/seed/\(itemSeed)/\(assetSize.width)/\(assetSize.height)"), thumbnailURL: .init(string: .init("https://picsum.photos/seed/\(itemSeed)/1000/1000")), size: assetSize)
+
+        // Create Message Model
+        let messageModel = MessageModel(id: UUID().uuidString, owner: .owner(owner: .init(id: "7541", username: "nicat")), messageType: .onlyMedia(media: mediaAsset), creationDate: Date().timeIntervalSince1970, updaetDate: nil)
+
+        // Add Item To Data Source
+        messageData.append(messageModel)
+        
+        // Send Mock Answer
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            guard let self = self else { return }
+            var item = messageModel
             item.owner = .opponent(owner: .init(id: "854", username: "frog"))
             self.messageData.append(item)
         }

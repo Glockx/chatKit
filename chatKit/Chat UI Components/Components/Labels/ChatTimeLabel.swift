@@ -2,7 +2,7 @@
 //  ChatTimeLabel.swift
 //  chatKit
 //
-//  Created by spresto on 2022/08/05.
+//  Created by Nijat Muzaffarli on 2022/08/05.
 //
 
 import Foundation

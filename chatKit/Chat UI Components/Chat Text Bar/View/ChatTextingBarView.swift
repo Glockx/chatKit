@@ -14,12 +14,14 @@ class ChatTextingBarView: UIView, UITextViewDelegate {
     // MARK: - Views
 
     // Add Button
-    var addButton = UIButton().then {
+    lazy var addButton = UIButton().then { [weak self] in
+        guard let self = self else { return }
         $0.tintColor = .brandMainBlue
         var config = UIImage.SymbolConfiguration(font: .systemFont(ofSize: 20, weight: .regular), scale: .large)
         var image = UIImage(systemName: "plus", withConfiguration: config)
         $0.setImage(image, for: .normal)
         $0.isUserInteractionEnabled = true
+        $0.addTarget(self, action: #selector(addButtonPressed), for: .primaryActionTriggered)
     }
 
     // Send Button
@@ -93,7 +95,10 @@ class ChatTextingBarView: UIView, UITextViewDelegate {
         addSubview(sendButton)
         addSubview(textView)
 
+        // Send Button Target
         sendButton.addTarget(self, action: #selector(sendMessage), for: .primaryActionTriggered)
+
+        //
     }
 
     // MARK: - Bind Values
@@ -163,6 +168,13 @@ class ChatTextingBarView: UIView, UITextViewDelegate {
         sendButton.isEnabled = false
         // Restore Text View Size
         viewModel.textViewHeight = viewModel.defaultTextviewHeight
+    }
+
+    // MARK: - Add Button Pressed
+
+    @objc func addButtonPressed() {
+        // Present Photo Picker
+        viewModel.chatMainModel.sendMediaItem()
     }
 
     // MARK: - layoutSubviews

@@ -40,6 +40,9 @@ class MainView: UIView {
         // Set Model
         self.viewModel = viewModel
 
+        // Set Chat Main View Parent Controller
+        chatMainView.viewModel.parentController = self.viewModel.parentController
+
         // Configure View
         configureView()
 
