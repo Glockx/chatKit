@@ -161,7 +161,6 @@ final class MediaAndTextChatCellView: UIView {
         switch owner {
         case .opponent:
             // Text Label
-            textLabel.textAlignment = .left
             textLabel.textColor = .chatDarkBlueText
             // Time Label
             timeLabel.textAlignment = .left
@@ -170,7 +169,6 @@ final class MediaAndTextChatCellView: UIView {
             containerView.backgroundColor = .brandMainGray
         case .owner:
             // Text Label
-            textLabel.textAlignment = .right
             textLabel.textColor = .white
             // Time Label
             timeLabel.textAlignment = .right
@@ -197,36 +195,26 @@ final class MediaAndTextChatCellView: UIView {
 
     func layout() {
         // Container View
-        containerView.pin.top().width(65%)
+        containerView.pin.top().width(85%)
         // Switch Over Owner Mode
+
+        // Image View
+        imageView.pin.top().horizontally().justify(.right).height(viewModel.mediaItem.size.height).maxHeight(200).width(viewModel.mediaItem.size.width).maxWidth(85%)
+        // Play Button
+        playButton.pin.center(to: imageView.anchor.center).sizeToFit()
+        // Text Label
+        textLabel.pin.below(of: imageView, aligned: .center).marginTop(5).width(of: imageView).sizeToFit(.width)
+        // Date Label
+        timeLabel.pin.below(of: textLabel, aligned: .right).marginTop(5).sizeToFit(.content)
+
         switch viewModel.cellModel.owner {
         // If Owner is My self
         case .owner:
-
-            // Image View
-            imageView.pin.top().horizontally().justify(.right).height(viewModel.mediaItem.size.height).maxHeight(150).width(viewModel.mediaItem.size.width).maxWidth(65%)
-            // Play Button
-            playButton.pin.center(to: imageView.anchor.center).sizeToFit()
-            // Text Label
-            textLabel.pin.below(of: imageView, aligned: .center).marginTop(5).width(of: imageView).sizeToFit(.width)
-            // Date Label
-            timeLabel.pin.below(of: textLabel, aligned: .right).marginTop(5).sizeToFit(.content)
             // Container View Wrap Content
             containerView.pin.wrapContent(.all, padding: containerViewWrappingInset).right(10)
-
         case .opponent:
-
-            // Image View
-            imageView.pin.top().horizontally().justify(.right).height(viewModel.mediaItem.size.height).maxHeight(150).width(viewModel.mediaItem.size.width).maxWidth(65%)
-            // Play Button
-            playButton.pin.center(to: imageView.anchor.center).sizeToFit()
-            // Text Label
-            textLabel.pin.below(of: imageView, aligned: .center).marginTop(5).width(of: imageView).sizeToFit(.width)
-            // Time Label
-            timeLabel.pin.below(of: textLabel).right().marginTop(5).sizeToFit()
             // Container View Wrap Content
             containerView.pin.wrapContent(.all, padding: containerViewWrappingInset).left(10)
-
         case .system:
             break
         }

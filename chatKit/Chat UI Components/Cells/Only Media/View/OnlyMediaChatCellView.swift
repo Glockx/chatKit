@@ -178,32 +178,24 @@ final class OnlyMediaChatCellView: UIView {
 
     func layout() {
         // Container View
-        containerView.pin.top().width(65%)
+        containerView.pin.top().width(85%)
+
+        // Image View
+        imageView.pin.top().horizontally().justify(.right).height(viewModel.mediaItem.size.height).maxHeight(200).width(viewModel.mediaItem.size.width).maxWidth(85%)
+        // Play Button
+        playButton.pin.center(to: imageView.anchor.center).sizeToFit()
+        // Date Label
+        timeLabel.pin.below(of: imageView, aligned: .right).marginTop(5).sizeToFit(.content)
+
         // Switch Over Owner Mode
         switch viewModel.cellModel.owner {
         // If Owner is My self
         case .owner:
-
-            // Image View
-            imageView.pin.top().horizontally().justify(.right).height(viewModel.mediaItem.size.height).maxHeight(150).width(viewModel.mediaItem.size.width).maxWidth(65%)
-            // Play Button
-            playButton.pin.center(to: imageView.anchor.center).sizeToFit()
-            // Date Label
-            timeLabel.pin.below(of: imageView, aligned: .right).marginTop(5).sizeToFit(.content)
             // Container View Wrap Content
             containerView.pin.wrapContent(.all, padding: containerViewWrappingInset).right(10)
-
         case .opponent:
-
-            // Image View
-            imageView.pin.top().horizontally().justify(.right).height(viewModel.mediaItem.size.height).maxHeight(150).width(viewModel.mediaItem.size.width).maxWidth(65%)
-            // Play Button
-            playButton.pin.center(to: imageView.anchor.center).sizeToFit()
-            // Time Label
-            timeLabel.pin.below(of: imageView).right().marginTop(5).sizeToFit()
             // Container View Wrap Content
             containerView.pin.wrapContent(.all, padding: containerViewWrappingInset).left(10)
-
         case .system:
             break
         }

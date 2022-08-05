@@ -55,7 +55,7 @@ class ChatTextingBarViewModel {
     }
 
     // Media Menu
-    lazy var mediaMenu = UIMenu(title: "Media Items", identifier: .file, options: [], children: [onlyImageAction, onlyVideoAction, mediaAndTextAction])
+    lazy var mediaMenu = UIMenu(title: "Media Types", identifier: .file, options: [.displayInline], children: [mediaAndTextAction, onlyVideoAction, onlyImageAction])
 
     // MARK: - INIT
 

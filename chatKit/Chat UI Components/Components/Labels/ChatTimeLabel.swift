@@ -34,7 +34,7 @@ class ChatTimeLabel: UILabel {
     // MARK: - configureView
 
     func configureView() {
-        font = .systemFont(ofSize: 10, weight: .regular)
+        font = .systemFont(ofSize: 11, weight: .regular)
         textAlignment = .right
         textColor = .white
         lineBreakMode = .byTruncatingTail
