@@ -37,6 +37,20 @@ final class OnlyMediaChatCellView: UIView {
         $0.addInteraction(interaction)
     }
 
+    // Play Button
+    var playButton = UIButton().then {
+        $0.tintColor = .white
+        var config = UIImage.SymbolConfiguration(font: .systemFont(ofSize: 30, weight: .regular), scale: .large)
+        var image = UIImage(systemName: "play.circle", withConfiguration: config)
+        $0.setImage(image, for: .normal)
+        $0.isUserInteractionEnabled = true
+        $0.isHidden = true
+        $0.layer.shadowColor = UIColor.black.cgColor
+        $0.layer.shadowOffset = .init(width: 0, height: 2)
+        $0.layer.shadowRadius = 5
+        $0.layer.shadowOpacity = 0.5
+    }
+
     // MARK: - Variables
 
     // View Model
@@ -79,6 +93,7 @@ final class OnlyMediaChatCellView: UIView {
         addSubview(containerView)
         containerView.addSubview(imageView)
         containerView.addSubview(timeLabel)
+        containerView.addSubview(playButton)
     }
 
     // MARK: - Bind Values
@@ -101,6 +116,15 @@ final class OnlyMediaChatCellView: UIView {
                 // Set Image
                 imageView.kf.setImage(with: imageURL, options: [.transition(.fade(0.3))], completionHandler: nil)
             }
+
+            // Check Media Type and Set Play Button State
+            if mediaItem.mediaType == .image {
+                // Hide Play Button
+                playButton.isHidden = true
+            } else {
+                playButton.isHidden = false
+            }
+
         default: break
         }
 
@@ -161,6 +185,8 @@ final class OnlyMediaChatCellView: UIView {
 
             // Image View
             imageView.pin.top().horizontally().justify(.right).height(viewModel.mediaItem.size.height).maxHeight(150).width(viewModel.mediaItem.size.width).maxWidth(65%)
+            // Play Button
+            playButton.pin.center(to: imageView.anchor.center).sizeToFit()
             // Date Label
             timeLabel.pin.below(of: imageView, aligned: .right).marginTop(5).sizeToFit(.content)
             // Container View Wrap Content
@@ -170,6 +196,8 @@ final class OnlyMediaChatCellView: UIView {
 
             // Image View
             imageView.pin.top().horizontally().justify(.right).height(viewModel.mediaItem.size.height).maxHeight(150).width(viewModel.mediaItem.size.width).maxWidth(65%)
+            // Play Button
+            playButton.pin.center(to: imageView.anchor.center).sizeToFit()
             // Time Label
             timeLabel.pin.below(of: imageView).right().marginTop(5).sizeToFit()
             // Container View Wrap Content

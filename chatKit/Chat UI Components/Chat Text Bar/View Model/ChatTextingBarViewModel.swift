@@ -6,8 +6,8 @@
 //
 
 import Combine
-import CoreGraphics
 import Foundation
+import UIKit
 
 class ChatTextingBarViewModel {
     // MARK: - Variables
@@ -29,6 +29,25 @@ class ChatTextingBarViewModel {
 
     /// Chat Main Model
     weak var chatMainModel: ChatMainViewModel!
+
+    /// Only Image Action
+    lazy var onlyImageAction = UIAction(title: "Only Image",
+                                        image: UIImage(systemName: "photo.fill")) { [weak self] _ in
+        guard let self = self else { return }
+        // Send Image Only
+        self.chatMainModel.sendOnlyImageAction()
+    }
+
+    /// Only Video Action
+    lazy var onlyVideoAction = UIAction(title: "Only Video",
+                                        image: UIImage(systemName: "tv.fill")) { [weak self] _ in
+        guard let self = self else { return }
+        // Send Image Only
+        self.chatMainModel.sendOnlyVideoAction()
+    }
+
+    // Media Menu
+    lazy var mediaMenu = UIMenu(title: "Media Items", identifier: .file, options: [], children: [onlyImageAction, onlyVideoAction])
 
     // MARK: - INIT
 
