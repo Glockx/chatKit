@@ -16,7 +16,7 @@ class ChatMainView: UIView {
     // Collection View
     lazy var collectionView = CollectionView().then { [weak self] in
         guard let self = self else { return }
-        $0.keyboardDismissMode = .onDrag
+        $0.keyboardDismissMode = .none
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tappedOnCollection))
         // Add Target To Collection View's Tap Gesture For Dismissing Keyboard.
         $0.tapGestureRecognizer.addTarget(self, action: #selector(tappedOnCollection))
@@ -142,6 +142,6 @@ class ChatMainView: UIView {
             chatTextingBarView.pin.bottom().horizontally().sizeToFit(.width)
         }
         // Collection View
-        collectionView.pin.top(pin.safeArea).horizontally().above(of: chatTextingBarView)
+        collectionView.pin.top(pin.safeArea).horizontally(pin.safeArea).above(of: chatTextingBarView)
     }
 }

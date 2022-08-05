@@ -12,14 +12,8 @@ import UIKit
 final class OnlyTextChatCellView: UIView {
     // MARK: - Views
 
-    // Date Label
-    var dateLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 11, weight: .medium)
-        $0.textAlignment = .right
-        $0.textColor = .white
-        $0.lineBreakMode = .byTruncatingTail
-        $0.text = ""
-    }
+    // Time Label
+    var timeLabel = ChatTimeLabel()
 
     // Text Label
     var textLabel = UILabel().then {
@@ -84,7 +78,7 @@ final class OnlyTextChatCellView: UIView {
     func configureView() {
         // Add Subviews
         addSubview(containerView)
-        containerView.addSubview(dateLabel)
+        containerView.addSubview(timeLabel)
         containerView.addSubview(textLabel)
     }
 
@@ -107,7 +101,7 @@ final class OnlyTextChatCellView: UIView {
 
         // Set Time String
         if let timeString = CDateFormatter.shared.formatToMessageStyle(timeInterval: model.creationDate) {
-            dateLabel.text = timeString
+            timeLabel.text = timeString
         }
 
         // Set Cell Style
@@ -127,8 +121,8 @@ final class OnlyTextChatCellView: UIView {
             textLabel.textAlignment = .left
             textLabel.textColor = .chatDarkBlueText
             // Date Label
-            dateLabel.textAlignment = .left
-            dateLabel.textColor = .chatDarkBlueText
+            timeLabel.textAlignment = .left
+            timeLabel.textColor = .chatDarkBlueText
             // Container View
             containerView.backgroundColor = .brandMainGray
         case .owner:
@@ -136,8 +130,8 @@ final class OnlyTextChatCellView: UIView {
             textLabel.textAlignment = .left
             textLabel.textColor = .white
             // Date Label
-            dateLabel.textAlignment = .right
-            dateLabel.textColor = .white
+            timeLabel.textAlignment = .right
+            timeLabel.textColor = .white
             // Container View
             containerView.backgroundColor = .brandMainBlue
         case .system:
@@ -169,7 +163,7 @@ final class OnlyTextChatCellView: UIView {
             // Text Label
             textLabel.pin.top().horizontally().justify(.right).marginRight(7).sizeToFit(.widthFlexible)
             // Date Label
-            dateLabel.pin.below(of: textLabel, aligned: .right).marginTop(5).sizeToFit(.content)
+            timeLabel.pin.below(of: textLabel, aligned: .right).marginTop(5).sizeToFit(.content)
             // Container View Wrap Content
             containerView.pin.wrapContent(.all, padding: containerViewWrappingInset).right(10)
 
@@ -178,7 +172,7 @@ final class OnlyTextChatCellView: UIView {
             // Text Label
             textLabel.pin.top().horizontally().justify(.right).marginRight(7).sizeToFit(.widthFlexible)
             // Date Label
-            dateLabel.pin.below(of: textLabel).right().marginTop(5).sizeToFit()
+            timeLabel.pin.below(of: textLabel).right().marginTop(5).sizeToFit()
             // Container View Wrap Content
             containerView.pin.wrapContent(.all, padding: containerViewWrappingInset).left(10)
 

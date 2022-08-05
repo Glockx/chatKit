@@ -25,7 +25,7 @@ class ChatTextingBarView: UIView, UITextViewDelegate {
     // Send Button
     var sendButton = UIButton().then {
         $0.tintColor = .brandMainBlue
-        var config = UIImage.SymbolConfiguration(font: .systemFont(ofSize: 20, weight: .regular), scale: .large)
+        var config = UIImage.SymbolConfiguration(font: .systemFont(ofSize: 22, weight: .regular), scale: .large)
         var image = UIImage(systemName: "paperplane.circle.fill", withConfiguration: config)
         $0.setImage(image, for: .normal)
         $0.isEnabled = false
@@ -118,6 +118,7 @@ class ChatTextingBarView: UIView, UITextViewDelegate {
                 // Set Text View Height
                 var textViewHeight = self.textView.sizeThatFits(.init(width: self.textView.frame.width, height: .greatestFiniteMagnitude)).height
 
+                // If Text View Height Smaller Than Default Text View Height, Enlarge it.
                 if textViewHeight <= self.viewModel.defaultTextviewHeight {
                     textViewHeight = self.viewModel.defaultTextviewHeight
                 }

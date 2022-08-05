@@ -40,6 +40,7 @@
 		313CBBDF289B6018009C9A3F /* TextType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313CBBDE289B6018009C9A3F /* TextType.swift */; };
 		313CBBE1289B7AB7009C9A3F /* BrandColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313CBBE0289B7AB7009C9A3F /* BrandColors.swift */; };
 		314200C8289B8FFA00750B9E /* ChatLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314200C7289B8FFA00750B9E /* ChatLayout.swift */; };
+		314200CC289CE4BF00750B9E /* ChatTimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314200CB289CE4BF00750B9E /* ChatTimeLabel.swift */; };
 		31D4F587289A45D200FDD33F /* CGSize + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4F586289A45D200FDD33F /* CGSize + Extensions.swift */; };
 		31D4F58A289A494600FDD33F /* OnlyTextChatCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4F588289A494600FDD33F /* OnlyTextChatCellView.swift */; };
 		31D4F58B289A494600FDD33F /* OnlyTextChatCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4F589289A494600FDD33F /* OnlyTextChatCellViewModel.swift */; };
@@ -85,6 +86,7 @@
 		313CBBDE289B6018009C9A3F /* TextType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextType.swift; sourceTree = "<group>"; };
 		313CBBE0289B7AB7009C9A3F /* BrandColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandColors.swift; sourceTree = "<group>"; };
 		314200C7289B8FFA00750B9E /* ChatLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLayout.swift; sourceTree = "<group>"; };
+		314200CB289CE4BF00750B9E /* ChatTimeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTimeLabel.swift; sourceTree = "<group>"; };
 		31D4F586289A45D200FDD33F /* CGSize + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize + Extensions.swift"; sourceTree = "<group>"; };
 		31D4F588289A494600FDD33F /* OnlyTextChatCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyTextChatCellView.swift; sourceTree = "<group>"; };
 		31D4F589289A494600FDD33F /* OnlyTextChatCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyTextChatCellViewModel.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				3101737F2899267B0011789C /* Chat Main View */,
 				310173822899271B0011789C /* Chat Text Bar */,
 				310173A6289A3B330011789C /* Cells */,
+				314200CA289CE4AA00750B9E /* Components */,
 				314200C9289CD1E200750B9E /* Chat Layout */,
 			);
 			path = "Chat UI Components";
@@ -373,6 +376,22 @@
 				314200C7289B8FFA00750B9E /* ChatLayout.swift */,
 			);
 			path = "Chat Layout";
+			sourceTree = "<group>";
+		};
+		314200CA289CE4AA00750B9E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				314200CD289CE4C600750B9E /* Labels */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		314200CD289CE4C600750B9E /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				314200CB289CE4BF00750B9E /* ChatTimeLabel.swift */,
+			);
+			path = Labels;
 			sourceTree = "<group>";
 		};
 		31D4F58C289A494900FDD33F /* Only Text */ = {
@@ -597,6 +616,7 @@
 				31D4F59B289A559400FDD33F /* DateFormatter.swift in Sources */,
 				313CBBD9289B5DF5009C9A3F /* OnlyEmojiCellProvider.swift in Sources */,
 				3101739F289A33D40011789C /* MessageType.swift in Sources */,
+				314200CC289CE4BF00750B9E /* ChatTimeLabel.swift in Sources */,
 				313CBBDF289B6018009C9A3F /* TextType.swift in Sources */,
 				310173B2289A41C30011789C /* MediaType.swift in Sources */,
 				31017385289927390011789C /* ChatTextingBarView.swift in Sources */,

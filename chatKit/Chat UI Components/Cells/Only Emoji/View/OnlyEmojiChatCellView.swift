@@ -12,14 +12,8 @@ import UIKit
 final class OnlyEmojiChatCellView: UIView {
     // MARK: - Views
 
-    // Date Label
-    var dateLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 11, weight: .medium)
-        $0.textAlignment = .right
-        $0.textColor = .white
-        $0.lineBreakMode = .byTruncatingTail
-        $0.text = ""
-    }
+    // Time Label
+    var timeLabel = ChatTimeLabel()
 
     // Text Label
     var textLabel = UILabel().then {
@@ -81,7 +75,7 @@ final class OnlyEmojiChatCellView: UIView {
     func configureView() {
         // Add Subviews
         addSubview(containerView)
-        containerView.addSubview(dateLabel)
+        containerView.addSubview(timeLabel)
         containerView.addSubview(textLabel)
     }
 
@@ -108,9 +102,9 @@ final class OnlyEmojiChatCellView: UIView {
             case 1:
                 textLabel.font = .systemFont(ofSize: 35, weight: .regular)
             case 2:
-                textLabel.font = .systemFont(ofSize: 32, weight: .regular)
+                textLabel.font = .systemFont(ofSize: 28, weight: .regular)
             case 3:
-                textLabel.font = .systemFont(ofSize: 29, weight: .regular)
+                textLabel.font = .systemFont(ofSize: 24, weight: .regular)
             default:
                 textLabel.font = .systemFont(ofSize: 14, weight: .regular)
             }
@@ -119,7 +113,7 @@ final class OnlyEmojiChatCellView: UIView {
 
         // Set Time String
         if let timeString = CDateFormatter.shared.formatToMessageStyle(timeInterval: model.creationDate) {
-            dateLabel.text = timeString
+            timeLabel.text = timeString
         }
 
         // Set Cell Style
@@ -135,14 +129,14 @@ final class OnlyEmojiChatCellView: UIView {
         switch owner {
         case .owner:
             // Date Label
-            dateLabel.textAlignment = .right
-            dateLabel.textColor = .white
+            timeLabel.textAlignment = .right
+            timeLabel.textColor = .white
             // Container View
             containerView.backgroundColor = .brandMainBlue
         case .opponent:
             // Date Label
-            dateLabel.textAlignment = .left
-            dateLabel.textColor = .chatDarkBlueText
+            timeLabel.textAlignment = .left
+            timeLabel.textColor = .chatDarkBlueText
             // Container View
             containerView.backgroundColor = .brandMainGray
         case .system:
@@ -172,12 +166,12 @@ final class OnlyEmojiChatCellView: UIView {
             // Text Label
             textLabel.pin.top().horizontally().justify(.center).sizeToFit(.widthFlexible)
             // Date Label
-            dateLabel.pin.below(of: textLabel).hCenter().marginTop(5).sizeToFit(.content)
+            timeLabel.pin.below(of: textLabel).hCenter().marginTop(5).sizeToFit(.content)
         default:
             // Text Label
             textLabel.pin.top().horizontally().justify(.right).sizeToFit(.widthFlexible)
             // Date Label
-            dateLabel.pin.below(of: textLabel).right().marginTop(5).sizeToFit(.content)
+            timeLabel.pin.below(of: textLabel).right().marginTop(5).sizeToFit(.content)
         }
 
         switch viewModel.cellModel.owner {

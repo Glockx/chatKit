@@ -48,17 +48,8 @@ class MainViewController: UIViewController {
 
         // Background
         view.backgroundColor = .white
-
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        view.addGestureRecognizer(tap) // Add gesture recognizer to background view
     }
 
-    @objc func handleTap() {
-        print("tap")
-        // Dismiss keyoard
-        view.endEditing(true)
-    }
-    
     // MARK: - Deinit
 
     deinit {
