@@ -38,7 +38,7 @@ Go to the project directory
 Install dependencies
 
 ```bash
-  sh debugRun
+  pod install
 ```
 
 Open
