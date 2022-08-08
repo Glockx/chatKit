@@ -26,7 +26,7 @@ extension OnlyEmojiChatCellView: CellViewProvider, CellSizeProvider {
     // MARK: - Size Source Provider
 
     static var sizeSourceProvider: SizeSource<CellData> {
-        return OnlyEmojiChatCellSizeSource()
+        return OnlyEmojiChatCellSizeSource.shared
     }
 }
 
@@ -36,6 +36,9 @@ class OnlyEmojiChatCellSizeSource: SizeSource<MessageModel> {
     // Size Caches
     var sizeCaches: [MessageModel: CGFloat]! = [:]
     let cell = OnlyEmojiChatCellView(viewModel: .init())
+
+    // Shared
+    static let shared = OnlyEmojiChatCellSizeSource()
 
     // MARK: - Size
 

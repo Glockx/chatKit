@@ -8,6 +8,7 @@
 import CollectionKit
 import Combine
 import Foundation
+import LoremSwiftum
 
 class ChatMainViewModel {
     // MARK: - CPI
@@ -71,6 +72,9 @@ class ChatMainViewModel {
     // MARK: - INIT
 
     init() {
+        // Collection View Source Deallocate Cells After 5 Seconds
+        collectionViewSource.reuseManager.lifeSpan = 5
+        
         // Collection Provider
         collectionProvider = BasicProvider(dataSource: collectionDataSource, viewSource: collectionViewSource, sizeSource: collectionSizeSource, layout: ChatMainLayout().insetVisibleFrame(by: .init(top: -250, left: 0, bottom: -250, right: 0)).inset(by: .init(top: 10, left: 0, bottom: 10, right: 0)), animator: ScaleAnimator(), tapHandler: tapHandler)
         // Bind Items
@@ -97,7 +101,7 @@ class ChatMainViewModel {
 
     func sendMessage(text: String, textType: TextStringType = .text) {
         // Init Mocking Model
-        let model = MessageModel(id: UUID().uuidString, owner: .owner(owner: .init(id: "7541", username: "nicat")), messageType: textType == .text ?.onlyText(text: text) : .emoji(text: text), creationDate: Date().timeIntervalSince1970, updaetDate: nil)
+        let model = MessageModel(id: UUID().uuidString, owner: .owner(owner: .init(id: "7541", username: "nicat")), messageType: textType == .text ?.onlyText(text: text) : .emoji(text: text), creationDate: Date().timeIntervalSince1970, updateDate: nil)
 
         // Add My Message
         messageData.append(model)
@@ -126,7 +130,7 @@ class ChatMainViewModel {
         let mediaAsset = MediaItem(mediaType: .image, mediaURL: .init(string: "https://picsum.photos/seed/\(itemSeed)/\(assetSize.width)/\(assetSize.height)"), thumbnailURL: .init(string: .init("https://picsum.photos/seed/\(itemSeed)/1000/1000")), size: assetSize)
 
         // Create Message Model
-        let messageModel = MessageModel(id: UUID().uuidString, owner: .owner(owner: .init(id: "7541", username: "nicat")), messageType: .onlyMedia(media: mediaAsset), creationDate: Date().timeIntervalSince1970, updaetDate: nil)
+        let messageModel = MessageModel(id: UUID().uuidString, owner: .owner(owner: .init(id: "7541", username: "nicat")), messageType: .onlyMedia(media: mediaAsset), creationDate: Date().timeIntervalSince1970, updateDate: nil)
 
         // Add Item To Data Source
         messageData.append(messageModel)
@@ -154,7 +158,7 @@ class ChatMainViewModel {
         let mediaAsset = MediaItem(mediaType: .video, mediaURL: .init(string: "https://picsum.photos/seed/\(itemSeed)/\(assetSize.width)/\(assetSize.height)"), thumbnailURL: .init(string: .init("https://picsum.photos/seed/\(itemSeed)/1000/1000")), size: assetSize)
 
         // Create Message Model
-        let messageModel = MessageModel(id: UUID().uuidString, owner: .owner(owner: .init(id: "7541", username: "nicat")), messageType: .onlyMedia(media: mediaAsset), creationDate: Date().timeIntervalSince1970, updaetDate: nil)
+        let messageModel = MessageModel(id: UUID().uuidString, owner: .owner(owner: .init(id: "7541", username: "nicat")), messageType: .onlyMedia(media: mediaAsset), creationDate: Date().timeIntervalSince1970, updateDate: nil)
 
         // Add Item To Data Source
         messageData.append(messageModel)
@@ -182,7 +186,7 @@ class ChatMainViewModel {
         let mediaAsset = MediaItem(mediaType: .image, mediaURL: .init(string: "https://picsum.photos/seed/\(itemSeed)/\(assetSize.width)/\(assetSize.height)"), thumbnailURL: .init(string: .init("https://picsum.photos/seed/\(itemSeed)/1000/1000")), size: assetSize)
 
         // Create Message Model
-        let messageModel = MessageModel(id: UUID().uuidString, owner: .owner(owner: .init(id: "7541", username: "nicat")), messageType: .mediaAndText(text: UUID().uuidString + UUID().uuidString + UUID().uuidString, media: mediaAsset), creationDate: Date().timeIntervalSince1970, updaetDate: nil)
+        let messageModel = MessageModel(id: UUID().uuidString, owner: .owner(owner: .init(id: "7541", username: "nicat")), messageType: .mediaAndText(text: UUID().uuidString + UUID().uuidString + UUID().uuidString, media: mediaAsset), creationDate: Date().timeIntervalSince1970, updateDate: nil)
 
         // Add Item To Data Source
         messageData.append(messageModel)
@@ -193,6 +197,23 @@ class ChatMainViewModel {
             var item = messageModel
             item.owner = .opponent(owner: .init(id: "854", username: "frog"))
             self.messageData.append(item)
+        }
+    }
+
+    // MARK: - Do Stress Test
+
+    func doStressTest() {
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] timer in
+            guard let self = self else { return }
+            // Init Mocking Model
+            let model = MessageModel(id: UUID().uuidString, owner: .owner(owner: .init(id: "7541", username: "nicat")), messageType: .onlyText(text: Lorem.paragraph), creationDate: Date().timeIntervalSince1970, updateDate: nil)
+
+            // Add My Message
+            self.messageData.append(model)
+
+            if self.messageData.count == 100 {
+                timer.invalidate()
+            }
         }
     }
 }

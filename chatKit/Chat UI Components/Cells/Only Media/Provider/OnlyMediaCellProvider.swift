@@ -27,7 +27,7 @@ extension OnlyMediaChatCellView: CellViewProvider, CellSizeProvider {
     // MARK: - Size Source Provider
 
     static var sizeSourceProvider: SizeSource<CellData> {
-        return OnlyMediaChatCellSizeProvider()
+        return OnlyMediaChatCellSizeProvider.shared
     }
 }
 
@@ -37,6 +37,9 @@ class OnlyMediaChatCellSizeProvider: SizeSource<MessageModel> {
     // Size Caches
     var sizeCaches: [MessageModel: CGFloat]! = [:]
     let cell = OnlyMediaChatCellView(viewModel: .init())
+
+    // Shared
+    static let shared = OnlyMediaChatCellSizeProvider()
 
     // MARK: - Size
 

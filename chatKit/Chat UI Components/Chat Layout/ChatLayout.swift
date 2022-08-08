@@ -18,15 +18,6 @@ class ChatMainLayout: SimpleLayout {
     /// Vertical Spacing Between Same Owner cells
     var sameCellSpacing: CGFloat = 3
 
-    /// Only Text Chat Cell
-    let onlyTextChatCellView = OnlyTextChatCellView(viewModel: .init())
-    /// Only Emoji Chat Cell
-    let onlyEmojiChatCellView = OnlyEmojiChatCellView(viewModel: .init())
-    /// Only Media Chat Cell
-    let onlyMediaChatCellView = OnlyMediaChatCellView(viewModel: .init())
-    /// Media and Text Chat Cell
-    let mediaAndTextChatCell = MediaAndTextChatCellView(viewModel: .init())
-
     // MARK: - simpleLayout
 
     /// Layouting The Collection
@@ -81,42 +72,26 @@ class ChatMainLayout: SimpleLayout {
         switch model.messageType {
         case .onlyText:
             // Set Cell Details
-            onlyTextChatCellView.setDetails(model: model)
-            // Get Cell Size
-            let size = onlyTextChatCellView.sizeThatFits(.init(width: collectionWidth, height: .greatestFiniteMagnitude))
-            // Crete New Frame From Cell Size
-            let frame = CGRect(x: 0, y: 0, width: collectionWidth, height: size.height)
+            let cellSize = OnlyTextChatCellView.sizeSourceProvider.size(at: 0, data: model, collectionSize: .init(width: collectionWidth, height: .greatestFiniteMagnitude))
             // Return Frame
-            return frame
+            return CGRect(x: 0, y: 0, width: collectionWidth, height: cellSize.height)
         case .onlyMedia:
             // Set Cell Details
-            onlyMediaChatCellView.setDetails(model: model)
-            // Get Cell Size
-            let size = onlyMediaChatCellView.sizeThatFits(.init(width: collectionWidth, height: .greatestFiniteMagnitude))
-            // Crete New Frame From Cell Size
-            let frame = CGRect(x: 0, y: 0, width: collectionWidth, height: size.height)
+            let cellSize = OnlyMediaChatCellView.sizeSourceProvider.size(at: 0, data: model, collectionSize: .init(width: collectionWidth, height: .greatestFiniteMagnitude))
             // Return Frame
-            return frame
+            return CGRect(x: 0, y: 0, width: collectionWidth, height: cellSize.height)
         case .mediaAndText:
             // Set Cell Details
-            mediaAndTextChatCell.setDetails(model: model)
-            // Get Cell Size
-            let size = mediaAndTextChatCell.sizeThatFits(.init(width: collectionWidth, height: .greatestFiniteMagnitude))
-            // Crete New Frame From Cell Size
-            let frame = CGRect(x: 0, y: 0, width: collectionWidth, height: size.height)
+            let cellSize = MediaAndTextChatCellView.sizeSourceProvider.size(at: 0, data: model, collectionSize: .init(width: collectionWidth, height: .greatestFiniteMagnitude))
             // Return Frame
-            return frame
+            return CGRect(x: 0, y: 0, width: collectionWidth, height: cellSize.height)
         case .audio:
             return .null
         case .emoji:
             // Set Cell Details
-            onlyEmojiChatCellView.setDetails(model: model)
-            // Get Cell Size
-            let size = onlyEmojiChatCellView.sizeThatFits(.init(width: collectionWidth, height: .greatestFiniteMagnitude))
-            // Crete New Frame From Cell Size
-            let frame = CGRect(x: 0, y: 0, width: collectionWidth, height: size.height)
+            let cellSize = OnlyEmojiChatCellView.sizeSourceProvider.size(at: 0, data: model, collectionSize: .init(width: collectionWidth, height: .greatestFiniteMagnitude))
             // Return Frame
-            return frame
+            return CGRect(x: 0, y: 0, width: collectionWidth, height: cellSize.height)
         }
     }
 }

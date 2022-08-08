@@ -27,21 +27,28 @@ extension OnlyTextChatCellView: CellViewProvider, CellSizeProvider {
     // MARK: - Size Source Provider
 
     static var sizeSourceProvider: SizeSource<CellData> {
-        return OnlyTextChatCellSizeSource()
+        return OnlyTextChatCellSizeSource.shared
     }
 }
 
-// MARK: - FAQCellViewCachedSizeSource
+// MARK: - OnlyTextChatCellViewSource
+
+
+// MARK: - OnlyTextChatCellSizeSource
 
 class OnlyTextChatCellSizeSource: SizeSource<MessageModel> {
     // Size Caches
     var sizeCaches: [MessageModel: CGFloat]! = [:]
     let cell = OnlyTextChatCellView(viewModel: .init())
 
+    // Shared
+    static let shared = OnlyTextChatCellSizeSource()
+
     // MARK: - Size
 
     override func size(at _: Int, data: MessageModel, collectionSize: CGSize) -> CGSize {
         // Check If Cahce Is Exist
+
         if sizeCaches[data] != nil {
             return .init(width: collectionSize.width, height: sizeCaches[data]!)
             // Calculate Size

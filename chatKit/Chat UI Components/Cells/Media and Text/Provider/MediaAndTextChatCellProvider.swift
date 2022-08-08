@@ -26,7 +26,7 @@ extension MediaAndTextChatCellView: CellViewProvider, CellSizeProvider {
     // MARK: - Size Source Provider
 
     static var sizeSourceProvider: SizeSource<CellData> {
-        return MediaAndTextChatCellSizeProvider()
+        return MediaAndTextChatCellSizeProvider.shared
     }
 }
 
@@ -36,6 +36,9 @@ class MediaAndTextChatCellSizeProvider: SizeSource<MessageModel> {
     // Size Caches
     var sizeCaches: [MessageModel: CGFloat]! = [:]
     let cell = MediaAndTextChatCellView(viewModel: .init())
+
+    // Shared
+    static let shared = MediaAndTextChatCellSizeProvider()
 
     // MARK: - Size
 

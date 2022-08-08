@@ -28,5 +28,5 @@ public struct MessageModel: Hashable, Equatable, Identifiable {
     public var creationDate: TimeInterval
 
     /// Last Update Date Of The Message (Optional)
-    public var updaetDate: TimeInterval?
+    public var updateDate: TimeInterval?
 }

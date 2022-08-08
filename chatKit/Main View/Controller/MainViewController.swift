@@ -50,6 +50,12 @@ class MainViewController: UIViewController {
         view.backgroundColor = .white
     }
 
+    // MARK: - viewDidAppear
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+
     // MARK: - Deinit
 
     deinit {

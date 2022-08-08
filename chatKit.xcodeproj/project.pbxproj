@@ -48,6 +48,7 @@
 		31833E76289D07D20090F023 /* MediaAndTextChatCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31833E74289D07D20090F023 /* MediaAndTextChatCellView.swift */; };
 		31833E77289D07D20090F023 /* MediaAndTextChatCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31833E75289D07D20090F023 /* MediaAndTextChatCellViewModel.swift */; };
 		31833E7A289D07FA0090F023 /* MediaAndTextChatCellProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31833E79289D07FA0090F023 /* MediaAndTextChatCellProvider.swift */; };
+		31BF20AE28A0A3F000CDD58A /* LoremSwiftum in Frameworks */ = {isa = PBXBuildFile; productRef = 31BF20AD28A0A3F000CDD58A /* LoremSwiftum */; };
 		31D4F587289A45D200FDD33F /* CGSize + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4F586289A45D200FDD33F /* CGSize + Extensions.swift */; };
 		31D4F58A289A494600FDD33F /* OnlyTextChatCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4F588289A494600FDD33F /* OnlyTextChatCellView.swift */; };
 		31D4F58B289A494600FDD33F /* OnlyTextChatCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4F589289A494600FDD33F /* OnlyTextChatCellViewModel.swift */; };
@@ -119,6 +120,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				314200DA289CF74200750B9E /* Kingfisher in Frameworks */,
+				31BF20AE28A0A3F000CDD58A /* LoremSwiftum in Frameworks */,
 				310173712899253B0011789C /* PinLayout in Frameworks */,
 				3101738B289A000A0011789C /* Then in Frameworks */,
 				FD26348FD71157147ACF2535 /* Pods_chatKit.framework in Frameworks */,
@@ -567,6 +569,7 @@
 				310173702899253B0011789C /* PinLayout */,
 				3101738A289A000A0011789C /* Then */,
 				314200D9289CF74200750B9E /* Kingfisher */,
+				31BF20AD28A0A3F000CDD58A /* LoremSwiftum */,
 			);
 			productName = chatKit;
 			productReference = 31017358289924D60011789C /* chatKit.app */;
@@ -600,6 +603,7 @@
 				3101736F2899253B0011789C /* XCRemoteSwiftPackageReference "PinLayout" */,
 				31017389289A000A0011789C /* XCRemoteSwiftPackageReference "Then" */,
 				314200D8289CF74200750B9E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				31BF20AC28A0A3F000CDD58A /* XCRemoteSwiftPackageReference "LoremSwiftum" */,
 			);
 			productRefGroup = 31017359289924D60011789C /* Products */;
 			projectDirPath = "";
@@ -964,6 +968,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		31BF20AC28A0A3F000CDD58A /* XCRemoteSwiftPackageReference "LoremSwiftum" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lukaskubanek/LoremSwiftum";
+			requirement = {
+				kind = exactVersion;
+				version = 2.2.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -981,6 +993,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 314200D8289CF74200750B9E /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		31BF20AD28A0A3F000CDD58A /* LoremSwiftum */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 31BF20AC28A0A3F000CDD58A /* XCRemoteSwiftPackageReference "LoremSwiftum" */;
+			productName = LoremSwiftum;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
