@@ -19,7 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Show Navigation Controller
         let window = UIWindow(windowScene: windowScene)
 
-        window.rootViewController = MainViewController(viewModel: .init())
+        // Navigation Controller
+        let navigationController = NavigationController(rootViewController: ChannelListViewController(viewModel: .init()))
+
+        // Set Root View Controller
+        window.rootViewController = navigationController
         self.window = window
         window.makeKeyAndVisible()
     }

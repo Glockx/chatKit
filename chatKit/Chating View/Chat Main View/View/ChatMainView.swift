@@ -10,7 +10,7 @@ import Combine
 import PinLayout
 import UIKit
 
-class ChatMainView: UIView {
+class ChatMainView: UIView, UIScrollViewDelegate {
     // MARK: - Views
 
     // Collection View
@@ -20,6 +20,7 @@ class ChatMainView: UIView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tappedOnCollection))
         // Add Target To Collection View's Tap Gesture For Dismissing Keyboard.
         $0.tapGestureRecognizer.addTarget(self, action: #selector(tappedOnCollection))
+        $0.delegate = self
     }
 
     // Text Field

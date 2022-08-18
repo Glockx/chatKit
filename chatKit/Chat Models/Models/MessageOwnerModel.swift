@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LoremSwiftum
 
 /// Message Owner Details Model
 public struct OwnerDetailsModel: Equatable, Hashable {
@@ -14,5 +15,7 @@ public struct OwnerDetailsModel: Equatable, Hashable {
 
     /// Username of the owner
     var username: String
+
+    /// Profile Image
+    var profileImage: String? = "https://picsum.photos/seed/\(UUID().uuidString)/1000/1000"
 }
-    
