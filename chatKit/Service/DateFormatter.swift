@@ -14,8 +14,10 @@ class CDateFormatter {
     static let shared = CDateFormatter()
 
     /// Date Formatter
-    var dateFormatter = DateFormatter().then {
-        $0.dateFormat = "hh:mm a"
+    var dateFormatter = RelativeDateTimeFormatter().then {
+        $0.unitsStyle = .full
+        $0.dateTimeStyle = .numeric
+        $0.formattingContext = .dynamic
     }
 
     // MARK: - Init
@@ -27,6 +29,6 @@ class CDateFormatter {
     /// - Parameter date: Date
     /// - Returns: Format Date To Message Time Style. Example: 4:25 PM
     func formatToMessageStyle(timeInterval: TimeInterval) -> String? {
-        return dateFormatter.string(from: Date(timeIntervalSince1970: timeInterval))
+        return dateFormatter.string(for: Date(timeIntervalSince1970: timeInterval))
     }
 }

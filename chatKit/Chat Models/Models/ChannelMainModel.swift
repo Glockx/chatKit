@@ -14,11 +14,14 @@ struct ChannelMainModel: Equatable, Hashable, Identifiable {
     var id: String = UUID().uuidString
 
     /// Profile
-    var opponentUser = OwnerDetailsModel(id: "alex754", username: "Alex")
+    var opponentUser = OwnerDetailsModel(id: Lorem.fullName, username: Lorem.firstName)
 
     /// Latest Message Date
-    var latestMessageDate: TimeInterval? = Date().timeIntervalSince1970
+    var latestMessageDate: TimeInterval? = Date.random(in: Date().addingTimeInterval(-120000) ..< Date().addingTimeInterval(5000)).timeIntervalSince1970
 
     /// Latest Messge
-    var latestMessage: String? = Lorem.fullName
+    var latestMessage: String? = Lorem.sentence
+
+    /// Unread Message Count
+    var unreadMessageCount = Int.random(in: 0 ... 50)
 }

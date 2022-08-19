@@ -51,9 +51,11 @@
 		3161575128AE33DE004EC0DE /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3161575028AE33DE004EC0DE /* NavigationController.swift */; };
 		3161575528AE3772004EC0DE /* CLChannelCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3161575328AE3772004EC0DE /* CLChannelCellView.swift */; };
 		3161575C28AE37D6004EC0DE /* ChannelMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3161575B28AE37D5004EC0DE /* ChannelMainModel.swift */; };
+		3163834C28AF229300AE47F0 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3163834B28AF229300AE47F0 /* PaddingLabel.swift */; };
 		31833E76289D07D20090F023 /* MediaAndTextChatCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31833E74289D07D20090F023 /* MediaAndTextChatCellView.swift */; };
 		31833E77289D07D20090F023 /* MediaAndTextChatCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31833E75289D07D20090F023 /* MediaAndTextChatCellViewModel.swift */; };
 		31833E7A289D07FA0090F023 /* MediaAndTextChatCellProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31833E79289D07FA0090F023 /* MediaAndTextChatCellProvider.swift */; };
+		31A2ED1B28AF24A30024A1DC /* Date + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A2ED1A28AF24A30024A1DC /* Date + Extensions.swift */; };
 		31BF20AE28A0A3F000CDD58A /* LoremSwiftum in Frameworks */ = {isa = PBXBuildFile; productRef = 31BF20AD28A0A3F000CDD58A /* LoremSwiftum */; };
 		31D4F587289A45D200FDD33F /* CGSize + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4F586289A45D200FDD33F /* CGSize + Extensions.swift */; };
 		31D4F58A289A494600FDD33F /* OnlyTextChatCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4F588289A494600FDD33F /* OnlyTextChatCellView.swift */; };
@@ -110,9 +112,11 @@
 		3161575028AE33DE004EC0DE /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		3161575328AE3772004EC0DE /* CLChannelCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChannelCellView.swift; sourceTree = "<group>"; };
 		3161575B28AE37D5004EC0DE /* ChannelMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelMainModel.swift; sourceTree = "<group>"; };
+		3163834B28AF229300AE47F0 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		31833E74289D07D20090F023 /* MediaAndTextChatCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAndTextChatCellView.swift; sourceTree = "<group>"; };
 		31833E75289D07D20090F023 /* MediaAndTextChatCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAndTextChatCellViewModel.swift; sourceTree = "<group>"; };
 		31833E79289D07FA0090F023 /* MediaAndTextChatCellProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAndTextChatCellProvider.swift; sourceTree = "<group>"; };
+		31A2ED1A28AF24A30024A1DC /* Date + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extensions.swift"; sourceTree = "<group>"; };
 		31D4F586289A45D200FDD33F /* CGSize + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize + Extensions.swift"; sourceTree = "<group>"; };
 		31D4F588289A494600FDD33F /* OnlyTextChatCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyTextChatCellView.swift; sourceTree = "<group>"; };
 		31D4F589289A494600FDD33F /* OnlyTextChatCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyTextChatCellViewModel.swift; sourceTree = "<group>"; };
@@ -258,6 +262,7 @@
 				31017394289A078C0011789C /* UIResponder + Extensions.swift */,
 				31017396289A0B790011789C /* UITextView + Extensions.swift */,
 				31017392289A02670011789C /* UIView + Extensions.swift */,
+				31A2ED1A28AF24A30024A1DC /* Date + Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -507,6 +512,7 @@
 		3161574E28AE33BB004EC0DE /* UI Components */ = {
 			isa = PBXGroup;
 			children = (
+				3163834A28AF228A00AE47F0 /* Label */,
 				3161574F28AE33C9004EC0DE /* Navigation Controller */,
 			);
 			path = "UI Components";
@@ -534,6 +540,14 @@
 				3161575328AE3772004EC0DE /* CLChannelCellView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		3163834A28AF228A00AE47F0 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				3163834B28AF229300AE47F0 /* PaddingLabel.swift */,
+			);
+			path = Label;
 			sourceTree = "<group>";
 		};
 		31833E71289D07AC0090F023 /* Media and Text */ = {
@@ -780,6 +794,7 @@
 				313CBBE1289B7AB7009C9A3F /* BrandColors.swift in Sources */,
 				31017397289A0B790011789C /* UITextView + Extensions.swift in Sources */,
 				3101735C289924D60011789C /* AppDelegate.swift in Sources */,
+				31A2ED1B28AF24A30024A1DC /* Date + Extensions.swift in Sources */,
 				314200D1289CF41A00750B9E /* OnlyMediaChatCellViewModel.swift in Sources */,
 				310173AE289A3E930011789C /* MediaItem.swift in Sources */,
 				31017395289A078C0011789C /* UIResponder + Extensions.swift in Sources */,
@@ -800,6 +815,7 @@
 				31833E77289D07D20090F023 /* MediaAndTextChatCellViewModel.swift in Sources */,
 				31017378289925680011789C /* MainViewModel.swift in Sources */,
 				3161574928AE3328004EC0DE /* ChannelListView.swift in Sources */,
+				3163834C28AF229300AE47F0 /* PaddingLabel.swift in Sources */,
 				310173A2289A342B0011789C /* MessageOwner.swift in Sources */,
 				31D4F59B289A559400FDD33F /* DateFormatter.swift in Sources */,
 				3161575528AE3772004EC0DE /* CLChannelCellView.swift in Sources */,

@@ -27,7 +27,7 @@ class ChannelListViewModel {
 
     // Collection View Source
     lazy var collectionViewSource = ClosureViewSource(viewUpdater: { [weak self] (cell: CLChannelCellView, model: ChannelMainModel, _: Int) in
-        
+
         // Configure Model
         cell.configureModel(model: model)
     })
@@ -52,7 +52,7 @@ class ChannelListViewModel {
 
     init() {
         // Placeholder Channels
-        channels = [.init(), .init(), .init(), .init(), .init()]
+        channels = [.init(), .init(), .init(), .init(), .init(), .init(), .init(), .init(), .init(), .init(), .init(), .init()]
         collectionDataSource.data = channels
 
         // Init Provider

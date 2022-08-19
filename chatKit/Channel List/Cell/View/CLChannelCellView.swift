@@ -29,11 +29,21 @@ class CLChannelCellView: UIView {
         $0.text = "N/A"
     }
 
+    // Message Count Label
+    var messageCountLabel = PaddingLabel(inset: .init(top: 2, left: 4, bottom: 2, right: 4)).then {
+        $0.font = .systemFont(ofSize: 12, weight: .regular)
+        $0.textAlignment = .center
+        $0.backgroundColor = .brandMainBlue
+        $0.textColor = .white
+        $0.lineBreakMode = .byTruncatingTail
+        $0.text = "/"
+    }
+
     // dateLabel
     var dateLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 14, weight: .regular)
+        $0.font = .systemFont(ofSize: 12, weight: .regular)
         $0.textAlignment = .right
-        $0.textColor = .brandMainGray
+        $0.textColor = .darkGray
         $0.lineBreakMode = .byTruncatingTail
         $0.text = "N/A"
     }
@@ -42,7 +52,7 @@ class CLChannelCellView: UIView {
     var lastMessageLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 13, weight: .regular)
         $0.textAlignment = .left
-        $0.textColor = .brandMainGray
+        $0.textColor = .lightGray
         $0.lineBreakMode = .byTruncatingTail
         $0.numberOfLines = 2
         $0.text = "N/A"
@@ -85,6 +95,7 @@ class CLChannelCellView: UIView {
         // Add Subviews
         addSubview(profileImageView)
         addSubview(usernameLabel)
+        addSubview(messageCountLabel)
         addSubview(dateLabel)
         addSubview(lastMessageLabel)
         addSubview(bottomSeparator)
@@ -115,6 +126,19 @@ class CLChannelCellView: UIView {
         // Set Latest Message
         lastMessageLabel.text = model.latestMessage
 
+        // Unread Message Count
+        if model.unreadMessageCount == 0 {
+            // Hide Message Count Label
+            messageCountLabel.isHidden = true
+            // Set Message Count Label To 0
+            messageCountLabel.text = "0"
+        } else {
+            // Show Message Count Label
+            messageCountLabel.isHidden = false
+            // Set Message Count
+            messageCountLabel.text = "\(model.unreadMessageCount)"
+        }
+
         // Layout View
         layoutView()
     }
@@ -137,12 +161,20 @@ class CLChannelCellView: UIView {
         // Profile Image View
         profileImageView.pin.centerLeft(20).size(55)
         profileImageView.cornerRadius = profileImageView.frame.height / 2
+        // Message Count Label
+        messageCountLabel.pin.right(20).top(to: profileImageView.edge.top).sizeToFit()
+        messageCountLabel.cornerRadius = messageCountLabel.frame.height / 2
         // Date Label
-        dateLabel.pin.right(20).top(to: profileImageView.edge.top).sizeToFit()
+        if messageCountLabel.isHidden {
+            dateLabel.pin.right(20).top(to: profileImageView.edge.top).sizeToFit()
+        } else {
+            dateLabel.pin.below(of: messageCountLabel, aligned: .right).marginTop(10).sizeToFit()
+        }
+
         // Username Label
         usernameLabel.pin.after(of: profileImageView, aligned: .top).marginLeft(10).right(to: dateLabel.edge.left).marginRight(5).sizeToFit(.width)
         // Last Message Label
-        lastMessageLabel.pin.below(of: usernameLabel, aligned: .left).marginTop(5).right(20).sizeToFit(.width)
+        lastMessageLabel.pin.below(of: usernameLabel, aligned: .left).marginTop(3).right(to: dateLabel.edge.left).marginRight(5).sizeToFit(.width)
         // Bottom Separator
         bottomSeparator.pin.bottom().horizontally().height(0.5)
     }
