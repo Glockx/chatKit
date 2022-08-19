@@ -33,8 +33,11 @@ class ChannelListViewModel {
     })
 
     // Collection Item Tap Handler
-    lazy var tapHandler: BasicProvider<ChannelMainModel, CLChannelCellView>.TapHandler = { [weak self] _ in
+    lazy var tapHandler: BasicProvider<ChannelMainModel, CLChannelCellView>.TapHandler = { [weak self] context in
         guard let self = self else { return }
+
+        // Push To Chat Controller
+        self.pushToChatContoller(model: context.data)
     }
 
     // MARK: - Variables
@@ -75,5 +78,12 @@ class ChannelListViewModel {
                 // Reload Provider
                 self.collectionProvider.reloadData()
             }.store(in: &cancellables)
+    }
+
+    // MARK: - Push To Chat Controller
+
+    func pushToChatContoller(model: ChannelMainModel) {
+        let vc = ChatMainViewController(viewModel: .init(chatChannelModel: model))
+        parentController.navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -32,6 +32,7 @@
 		310173AE289A3E930011789C /* MediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310173AD289A3E930011789C /* MediaItem.swift */; };
 		310173B0289A414B0011789C /* MessageOwnerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310173AF289A414B0011789C /* MessageOwnerModel.swift */; };
 		310173B2289A41C30011789C /* MediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310173B1289A41C30011789C /* MediaType.swift */; };
+		310AF2F728AF2A6B0060A78E /* ChatMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310AF2F628AF2A6B0060A78E /* ChatMainViewController.swift */; };
 		313CBBD2289B5C6B009C9A3F /* OnlyEmojiChatCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313CBBD0289B5C6B009C9A3F /* OnlyEmojiChatCellView.swift */; };
 		313CBBD3289B5C6B009C9A3F /* OnlyEmojiChatCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313CBBD1289B5C6B009C9A3F /* OnlyEmojiChatCellViewModel.swift */; };
 		313CBBD9289B5DF5009C9A3F /* OnlyEmojiCellProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313CBBD8289B5DF5009C9A3F /* OnlyEmojiCellProvider.swift */; };
@@ -94,6 +95,7 @@
 		310173AD289A3E930011789C /* MediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItem.swift; sourceTree = "<group>"; };
 		310173AF289A414B0011789C /* MessageOwnerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageOwnerModel.swift; sourceTree = "<group>"; };
 		310173B1289A41C30011789C /* MediaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaType.swift; sourceTree = "<group>"; };
+		310AF2F628AF2A6B0060A78E /* ChatMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMainViewController.swift; sourceTree = "<group>"; };
 		313CBBD0289B5C6B009C9A3F /* OnlyEmojiChatCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyEmojiChatCellView.swift; sourceTree = "<group>"; };
 		313CBBD1289B5C6B009C9A3F /* OnlyEmojiChatCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyEmojiChatCellViewModel.swift; sourceTree = "<group>"; };
 		313CBBD8289B5DF5009C9A3F /* OnlyEmojiCellProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyEmojiCellProvider.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 		3101737F2899267B0011789C /* Chat Main View */ = {
 			isa = PBXGroup;
 			children = (
+				310AF2F528AF2A5C0060A78E /* View Controller */,
 				310173802899268D0011789C /* View */,
 				31017381289926930011789C /* View Model */,
 			);
@@ -360,6 +363,14 @@
 				31D4F597289A52F200FDD33F /* CellSizeProvider.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		310AF2F528AF2A5C0060A78E /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				310AF2F628AF2A6B0060A78E /* ChatMainViewController.swift */,
+			);
+			path = "View Controller";
 			sourceTree = "<group>";
 		};
 		313CBBD4289B5C72009C9A3F /* Only Emoji */ = {
@@ -817,6 +828,7 @@
 				3161574928AE3328004EC0DE /* ChannelListView.swift in Sources */,
 				3163834C28AF229300AE47F0 /* PaddingLabel.swift in Sources */,
 				310173A2289A342B0011789C /* MessageOwner.swift in Sources */,
+				310AF2F728AF2A6B0060A78E /* ChatMainViewController.swift in Sources */,
 				31D4F59B289A559400FDD33F /* DateFormatter.swift in Sources */,
 				3161575528AE3772004EC0DE /* CLChannelCellView.swift in Sources */,
 				313CBBD9289B5DF5009C9A3F /* OnlyEmojiCellProvider.swift in Sources */,

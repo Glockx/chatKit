@@ -13,7 +13,7 @@ class MainView: UIView {
     // MARK: - Views
 
     // Chat View
-    var chatMainView = ChatMainView(viewModel: .init())
+    var chatMainView = ChatMainView(viewModel: .init(chatChannelModel: .init()))
 
     // MARK: - Variables
 

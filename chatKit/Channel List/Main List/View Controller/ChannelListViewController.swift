@@ -49,33 +49,45 @@ class ChannelListViewController: UIViewController {
         // Background
         view.backgroundColor = .white
 
-        navigationController?.navigationBar.prefersLargeTitles = true
-
         // Navigation Bar background color
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = UIColor.brandMainBlue
 
-        // setup title font color
+        // Setup Title Font Color
         let titleAttribute = [NSAttributedString.Key.foregroundColor: UIColor.white]
         appearance.titleTextAttributes = titleAttribute
         appearance.largeTitleTextAttributes = titleAttribute
 
+        // Navigation Bar Back Button Color
+        navigationController?.navigationBar.tintColor = .white
+
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
 
+        // Navigation Title
         title = "Chats"
     }
+
+    // MARK: - viewWillAppear
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        // Prefer Large Titles
+        navigationController?.navigationBar.prefersLargeTitles = true
+
+        // Show Navigation Bar
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
+    // MARK: - viewWillDisappear
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: true)
+
+        // Hide Navigation Bar
+        // navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
     // MARK: - Deinit
