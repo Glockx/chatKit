@@ -30,6 +30,19 @@ class ChannelListViewModel {
         CLChannelCellView(viewModel: .init())
     }, viewUpdater: { [weak self] (cell: CLChannelCellView, model: ChannelMainModel, _: Int) in
 
+        // Add Delete Action
+        var deleteAction = ChannelCellActionView(viewModel: .init(actionStyle: .destructive, action: {
+            print("Hello")
+        }))
+
+        cell.addSwipeAction(alignment: .right, action: deleteAction)
+
+        // Add Example Action
+        var exampleAction = ChannelCellActionView(viewModel: .init(actionStyle: .regular, cellIcon: .init(systemName: "ellipsis"), action: {
+            print("more")
+        }))
+        cell.addSwipeAction(alignment: .left, action: exampleAction)
+
         // Configure Model
         cell.configureModel(model: model)
     })

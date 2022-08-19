@@ -29,6 +29,8 @@ class CLChannelCellView: UIView, CollectionViewReusableView {
         $0.clipsToBounds = true
         $0.kf.indicatorType = .activity
         $0.backgroundColor = .lightGray
+        $0.borderWidth = 1
+        $0.borderColor = .lightGray.withAlphaComponent(0.5)
     }
 
     // Username Label
@@ -67,6 +69,13 @@ class CLChannelCellView: UIView, CollectionViewReusableView {
         $0.lineBreakMode = .byTruncatingTail
         $0.numberOfLines = 2
         $0.text = "N/A"
+    }
+
+    // Online Indicator View
+    var onlineIndicatorView = UIView().then {
+        $0.backgroundColor = .brandMainBlue
+        $0.borderColor = .white
+        $0.borderWidth = 1.5
     }
 
     // Separator
@@ -114,6 +123,7 @@ class CLChannelCellView: UIView, CollectionViewReusableView {
         addSubview(leftActionContainer)
         addSubview(rightActionContainer)
         containerView.addSubview(profileImageView)
+        containerView.addSubview(onlineIndicatorView)
         containerView.addSubview(usernameLabel)
         containerView.addSubview(messageCountLabel)
         containerView.addSubview(dateLabel)
@@ -135,8 +145,11 @@ class CLChannelCellView: UIView, CollectionViewReusableView {
             .removeDuplicates()
             .sink { [weak self] _ in
                 guard let self = self else { return }
-                // Layout View
-                self.layoutView(withAnimation: true, duration: 0.2)
+                // Layout View With Spring Animation
+                UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.2, options: .curveEaseInOut, animations: {
+                    self.setNeedsLayout()
+                    self.layoutIfNeeded()
+                })
             }.store(in: &cancellables)
 
         // Set Right Actions
@@ -194,20 +207,22 @@ class CLChannelCellView: UIView, CollectionViewReusableView {
             messageCountLabel.text = "\(model.unreadMessageCount)"
         }
 
+        // Is Online Indicator
+        onlineIndicatorView.isHidden = !model.isOnline
+
         // Layout View
         layoutView()
     }
 
-    // MARK: - Create Swipe Gesture Recognized
+    // MARK: - Add Action
 
-    private func createSwipeGestureRecognizer(for direction: UISwipeGestureRecognizer.Direction) -> UISwipeGestureRecognizer {
-        // Initialize Swipe Gesture Recognizer
-        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(_:)))
-
-        // Configure Swipe Gesture Recognizer
-        swipeGestureRecognizer.direction = direction
-
-        return swipeGestureRecognizer
+    /// Adding a swipe action to the cell with given alignment.
+    /// - Parameters:
+    ///   - alignment: The alignment of the action in the cell. (Left Side / Right Side)
+    ///   - action: The Swipe Action View
+    func addSwipeAction(alignment: CLChannelCellViewModel.CellActionAddAlignemnt, action: ChannelCellActionView) {
+        // Pass Items To View Model
+        viewModel.addCellAction(alignment: alignment, action: action)
     }
 
     // MARK: - swipped
@@ -284,6 +299,9 @@ class CLChannelCellView: UIView, CollectionViewReusableView {
         // Profile Image View
         profileImageView.pin.centerLeft(20).size(55)
         profileImageView.cornerRadius = profileImageView.frame.height / 2
+        // Online Indicator View
+        onlineIndicatorView.pin.topRight(to: profileImageView.anchor.topRight).size(15)
+        onlineIndicatorView.cornerRadius = onlineIndicatorView.frame.height / 2
         // Message Count Label
         messageCountLabel.pin.right(20).top(to: profileImageView.edge.top).sizeToFit()
         messageCountLabel.cornerRadius = messageCountLabel.frame.height / 2
@@ -308,14 +326,26 @@ class CLChannelCellView: UIView, CollectionViewReusableView {
         autoSizeThatFits(size, layoutClosure: layout)
     }
 
+    // MARK: - Create Swipe Gesture Recognized
+
+    private func createSwipeGestureRecognizer(for direction: UISwipeGestureRecognizer.Direction) -> UISwipeGestureRecognizer {
+        // Initialize Swipe Gesture Recognizer
+        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(_:)))
+
+        // Configure Swipe Gesture Recognizer
+        swipeGestureRecognizer.direction = direction
+
+        return swipeGestureRecognizer
+    }
+
     // MARK: - prepareForReuse
 
     func prepareForReuse() {
         /// Restore Swipe Action
         viewModel.cellActionSwipePosition = .regular
         /// Remove Right Actions
-        viewModel.rightCellActions = []
+        viewModel.rightCellActions?.removeAll()
         /// Remove Left Action
-        viewModel.leftCellActions = []
+        viewModel.leftCellActions?.removeAll()
     }
 }

@@ -24,6 +24,15 @@ class CLChannelCellViewModel {
         case regular
     }
 
+    /// Cell Action Adding Alignment:  For Determing The Action's Position In Cell's Action Container
+    enum CellActionAddAlignemnt {
+        /// Left Side
+        case left
+
+        // Right Side
+        case right
+    }
+
     // MARK: - Variables
 
     // Cancellables
@@ -48,4 +57,15 @@ class CLChannelCellViewModel {
     // MARK: - Bind Items
 
     func bindItems() {}
+
+    // MARK: - addCellAction
+
+    func addCellAction(alignment: CLChannelCellViewModel.CellActionAddAlignemnt, action: ChannelCellActionView) {
+        // Append Item By It's Alignment
+        if alignment == .left {
+            leftCellActions?.append(action)
+        } else {
+            rightCellActions?.append(action)
+        }
+    }
 }

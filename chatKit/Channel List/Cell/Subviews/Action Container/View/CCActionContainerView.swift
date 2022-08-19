@@ -76,6 +76,9 @@ class CCActionContainerView: UIView {
             .sink { [weak self] actions in
                 guard let self = self else { return }
 
+                // Clear Previous Items
+                self.stackView.subviews.forEach { self.stackView.removeItem($0) }
+
                 // Add Stack View Items
                 for item in actions {
                     // Add Item

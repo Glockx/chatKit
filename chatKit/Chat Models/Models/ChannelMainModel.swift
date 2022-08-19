@@ -17,11 +17,14 @@ struct ChannelMainModel: Equatable, Hashable, Identifiable {
     var opponentUser = OwnerDetailsModel(id: Lorem.fullName, username: Lorem.firstName)
 
     /// Latest Message Date
-    var latestMessageDate: TimeInterval? = Date.random(in: Date().addingTimeInterval(-120000) ..< Date().addingTimeInterval(5000)).timeIntervalSince1970
+    var latestMessageDate: TimeInterval? = Date.random(in: Date().addingTimeInterval(-120_000) ..< Date().addingTimeInterval(5000)).timeIntervalSince1970
 
     /// Latest Messge
     var latestMessage: String? = Lorem.sentence
 
     /// Unread Message Count
     var unreadMessageCount = Int.random(in: 0 ... 50)
+
+    /// Is User Online
+    var isOnline = Bool.random()
 }
