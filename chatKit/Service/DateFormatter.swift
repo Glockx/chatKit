@@ -13,22 +13,35 @@ class CDateFormatter {
     // Shared
     static let shared = CDateFormatter()
 
-    /// Date Formatter
-    var dateFormatter = RelativeDateTimeFormatter().then {
+    /// Relative Date Formatter
+    var relativeDateFormatter = RelativeDateTimeFormatter().then {
         $0.unitsStyle = .full
         $0.dateTimeStyle = .numeric
         $0.formattingContext = .dynamic
+    }
+
+    /// Date Formatter
+    var dateFormatter = DateFormatter().then {
+        $0.dateFormat = "HH:mm a"
     }
 
     // MARK: - Init
 
     init() {}
 
-    // MARK: - Format Date To Message Time Style
+    // MARK: - Format Relative Date To Message Time Style
+
+    /// - Parameter date: Date
+    /// - Returns: Format Date To Message Time Style. Example: 4:25 PM
+    func relativeFormatToMessageStyle(timeInterval: TimeInterval) -> String? {
+        return relativeDateFormatter.string(for: Date(timeIntervalSince1970: timeInterval))
+    }
+
+    // MARK: - Format Relative Date To Message Time Style
 
     /// - Parameter date: Date
     /// - Returns: Format Date To Message Time Style. Example: 4:25 PM
     func formatToMessageStyle(timeInterval: TimeInterval) -> String? {
-        return dateFormatter.string(for: Date(timeIntervalSince1970: timeInterval))
+        return dateFormatter.string(from: Date(timeIntervalSince1970: timeInterval))
     }
 }

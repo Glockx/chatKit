@@ -65,16 +65,15 @@ class ChannelListView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-
         // Collection View
-        collectionView.pin.top(pin.safeArea).horizontally().bottom()
+        collectionView.pin.top().horizontally().bottom()
     }
 
     // MARK: - safeAreaInsetsDidChange
 
     override func safeAreaInsetsDidChange() {
         super.safeAreaInsetsDidChange()
-
+        // Layout View When Safe Area Inset Changes
         layoutView()
     }
 }

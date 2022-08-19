@@ -53,6 +53,12 @@
 		3161575528AE3772004EC0DE /* CLChannelCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3161575328AE3772004EC0DE /* CLChannelCellView.swift */; };
 		3161575C28AE37D6004EC0DE /* ChannelMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3161575B28AE37D5004EC0DE /* ChannelMainModel.swift */; };
 		3163834C28AF229300AE47F0 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3163834B28AF229300AE47F0 /* PaddingLabel.swift */; };
+		317D1F1028AF5D6800FC8B4B /* ChannelCellActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317D1F0E28AF5D6800FC8B4B /* ChannelCellActionView.swift */; };
+		317D1F1128AF5D6800FC8B4B /* ChannelCellActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317D1F0F28AF5D6800FC8B4B /* ChannelCellActionViewModel.swift */; };
+		317D1F1728AF617300FC8B4B /* CCActionContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317D1F1528AF617300FC8B4B /* CCActionContainerView.swift */; };
+		317D1F1828AF617300FC8B4B /* ChannelCellActionContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317D1F1628AF617300FC8B4B /* ChannelCellActionContainerViewModel.swift */; };
+		317D1F1D28AF631500FC8B4B /* PinStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317D1F1C28AF631500FC8B4B /* PinStackView.swift */; };
+		317D1F2128AF6B0300FC8B4B /* CLChannelCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317D1F2028AF6B0300FC8B4B /* CLChannelCellViewModel.swift */; };
 		31833E76289D07D20090F023 /* MediaAndTextChatCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31833E74289D07D20090F023 /* MediaAndTextChatCellView.swift */; };
 		31833E77289D07D20090F023 /* MediaAndTextChatCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31833E75289D07D20090F023 /* MediaAndTextChatCellViewModel.swift */; };
 		31833E7A289D07FA0090F023 /* MediaAndTextChatCellProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31833E79289D07FA0090F023 /* MediaAndTextChatCellProvider.swift */; };
@@ -115,6 +121,12 @@
 		3161575328AE3772004EC0DE /* CLChannelCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChannelCellView.swift; sourceTree = "<group>"; };
 		3161575B28AE37D5004EC0DE /* ChannelMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelMainModel.swift; sourceTree = "<group>"; };
 		3163834B28AF229300AE47F0 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		317D1F0E28AF5D6800FC8B4B /* ChannelCellActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCellActionView.swift; sourceTree = "<group>"; };
+		317D1F0F28AF5D6800FC8B4B /* ChannelCellActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCellActionViewModel.swift; sourceTree = "<group>"; };
+		317D1F1528AF617300FC8B4B /* CCActionContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCActionContainerView.swift; sourceTree = "<group>"; };
+		317D1F1628AF617300FC8B4B /* ChannelCellActionContainerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCellActionContainerViewModel.swift; sourceTree = "<group>"; };
+		317D1F1C28AF631500FC8B4B /* PinStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinStackView.swift; sourceTree = "<group>"; };
+		317D1F2028AF6B0300FC8B4B /* CLChannelCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLChannelCellViewModel.swift; sourceTree = "<group>"; };
 		31833E74289D07D20090F023 /* MediaAndTextChatCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAndTextChatCellView.swift; sourceTree = "<group>"; };
 		31833E75289D07D20090F023 /* MediaAndTextChatCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAndTextChatCellViewModel.swift; sourceTree = "<group>"; };
 		31833E79289D07FA0090F023 /* MediaAndTextChatCellProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAndTextChatCellProvider.swift; sourceTree = "<group>"; };
@@ -523,6 +535,7 @@
 		3161574E28AE33BB004EC0DE /* UI Components */ = {
 			isa = PBXGroup;
 			children = (
+				317D1F1B28AF62CF00FC8B4B /* PinStackView */,
 				3163834A28AF228A00AE47F0 /* Label */,
 				3161574F28AE33C9004EC0DE /* Navigation Controller */,
 			);
@@ -541,6 +554,8 @@
 			isa = PBXGroup;
 			children = (
 				3161575728AE3774004EC0DE /* View */,
+				317D1F1F28AF6AEF00FC8B4B /* View Model */,
+				317D1F0D28AF5D4900FC8B4B /* Subviews */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -559,6 +574,81 @@
 				3163834B28AF229300AE47F0 /* PaddingLabel.swift */,
 			);
 			path = Label;
+			sourceTree = "<group>";
+		};
+		317D1F0C28AF5D3F00FC8B4B /* Action View */ = {
+			isa = PBXGroup;
+			children = (
+				317D1F1228AF5D6D00FC8B4B /* View */,
+				317D1F1328AF5D7200FC8B4B /* View Model */,
+			);
+			path = "Action View";
+			sourceTree = "<group>";
+		};
+		317D1F0D28AF5D4900FC8B4B /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				317D1F1428AF610200FC8B4B /* Action Container */,
+				317D1F0C28AF5D3F00FC8B4B /* Action View */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		317D1F1228AF5D6D00FC8B4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				317D1F0E28AF5D6800FC8B4B /* ChannelCellActionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		317D1F1328AF5D7200FC8B4B /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				317D1F0F28AF5D6800FC8B4B /* ChannelCellActionViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		317D1F1428AF610200FC8B4B /* Action Container */ = {
+			isa = PBXGroup;
+			children = (
+				317D1F1928AF617600FC8B4B /* View */,
+				317D1F1A28AF617A00FC8B4B /* View Model */,
+			);
+			path = "Action Container";
+			sourceTree = "<group>";
+		};
+		317D1F1928AF617600FC8B4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				317D1F1528AF617300FC8B4B /* CCActionContainerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		317D1F1A28AF617A00FC8B4B /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				317D1F1628AF617300FC8B4B /* ChannelCellActionContainerViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		317D1F1B28AF62CF00FC8B4B /* PinStackView */ = {
+			isa = PBXGroup;
+			children = (
+				317D1F1C28AF631500FC8B4B /* PinStackView.swift */,
+			);
+			path = PinStackView;
+			sourceTree = "<group>";
+		};
+		317D1F1F28AF6AEF00FC8B4B /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				317D1F2028AF6B0300FC8B4B /* CLChannelCellViewModel.swift */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 		31833E71289D07AC0090F023 /* Media and Text */ = {
@@ -790,6 +880,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3101737D289926780011789C /* ChatMainView.swift in Sources */,
+				317D1F2128AF6B0300FC8B4B /* CLChannelCellViewModel.swift in Sources */,
+				317D1F1128AF5D6800FC8B4B /* ChannelCellActionViewModel.swift in Sources */,
 				31017386289927390011789C /* ChatTextingBarViewModel.swift in Sources */,
 				3161574A28AE3328004EC0DE /* ChannelListViewModel.swift in Sources */,
 				310173B0289A414B0011789C /* MessageOwnerModel.swift in Sources */,
@@ -802,15 +894,19 @@
 				3161575128AE33DE004EC0DE /* NavigationController.swift in Sources */,
 				31D4F591289A4ACB00FDD33F /* OnlyTextCellProvider.swift in Sources */,
 				314200C8289B8FFA00750B9E /* ChatLayout.swift in Sources */,
+				317D1F1728AF617300FC8B4B /* CCActionContainerView.swift in Sources */,
 				313CBBE1289B7AB7009C9A3F /* BrandColors.swift in Sources */,
 				31017397289A0B790011789C /* UITextView + Extensions.swift in Sources */,
 				3101735C289924D60011789C /* AppDelegate.swift in Sources */,
 				31A2ED1B28AF24A30024A1DC /* Date + Extensions.swift in Sources */,
+				317D1F1028AF5D6800FC8B4B /* ChannelCellActionView.swift in Sources */,
+				317D1F1D28AF631500FC8B4B /* PinStackView.swift in Sources */,
 				314200D1289CF41A00750B9E /* OnlyMediaChatCellViewModel.swift in Sources */,
 				310173AE289A3E930011789C /* MediaItem.swift in Sources */,
 				31017395289A078C0011789C /* UIResponder + Extensions.swift in Sources */,
 				314200D0289CF41A00750B9E /* OnlyMediaChatCellView.swift in Sources */,
 				3101737E289926780011789C /* ChatMainViewModel.swift in Sources */,
+				317D1F1828AF617300FC8B4B /* ChannelCellActionContainerViewModel.swift in Sources */,
 				3161575C28AE37D6004EC0DE /* ChannelMainModel.swift in Sources */,
 				3101735E289924D60011789C /* SceneDelegate.swift in Sources */,
 				31017377289925680011789C /* MainView.swift in Sources */,

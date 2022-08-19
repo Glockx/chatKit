@@ -2,7 +2,7 @@
 //  ChatMainViewController.swift
 //  chatKit
 //
-//  Created by spresto on 2022/08/19.
+//  Created by Nijat Muzaffarli on 2022/08/19.
 //
 
 import UIKit
