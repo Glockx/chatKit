@@ -49,7 +49,7 @@ class ChannelListViewController: UIViewController {
         // Background
         view.backgroundColor = .white
 
-        // Navigation Bar background color
+        // Setup Navigation Bar background color
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = UIColor.brandMainBlue
@@ -62,10 +62,11 @@ class ChannelListViewController: UIViewController {
         // Navigation Bar Back Button Color
         navigationController?.navigationBar.tintColor = .white
 
+        // Set Apperance
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
 
-        // Navigation Title
+        // Set Navigation Title
         title = "Chats"
     }
 
@@ -79,15 +80,6 @@ class ChannelListViewController: UIViewController {
 
         // Show Navigation Bar
         navigationController?.setNavigationBarHidden(false, animated: false)
-    }
-
-    // MARK: - viewWillDisappear
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        // Hide Navigation Bar
-        // navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
     // MARK: - Deinit

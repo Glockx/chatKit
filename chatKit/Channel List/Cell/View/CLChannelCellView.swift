@@ -29,8 +29,6 @@ class CLChannelCellView: UIView, CollectionViewReusableView {
         $0.clipsToBounds = true
         $0.kf.indicatorType = .activity
         $0.backgroundColor = .lightGray
-        $0.borderWidth = 1
-        $0.borderColor = .lightGray.withAlphaComponent(0.5)
     }
 
     // Username Label
