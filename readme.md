@@ -1,3 +1,4 @@
+
 # ChatKit - Experimental Study 🎏
 
 A small project, intended to create a simple Chatting UI for iPhones.
@@ -9,12 +10,17 @@ A small project, intended to create a simple Chatting UI for iPhones.
 ## Features
 
 - A simple Chat UI with UIKit and PinLayout 📱
-- Cells:
+- Chatting Cells:
   - Text Message Type ✉️
   - Only Emoji Message Type 💌
   - Media Type (Video and Photo)
   - Media and Text Message Type
   - Audio Type
+ - Channel List:
+	 - Online Indicator
+	 - Unread Message Count
+	 - User Profile
+	 - Last Message
 - Auto Growing Chat Box
 - Keyboard Handling
 - Cell Recycling and Cell Size Caching
