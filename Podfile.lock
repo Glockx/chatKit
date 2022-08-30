@@ -2,21 +2,25 @@ PODS:
   - CollectionKit (2.4.0):
     - CollectionKit/Core (= 2.4.0)
   - CollectionKit/Core (2.4.0)
+  - CoreStore (8.1.0)
   - Reveal-SDK (38)
 
 DEPENDENCIES:
   - CollectionKit
+  - CoreStore (~> 8.0)
   - Reveal-SDK
 
 SPEC REPOS:
   trunk:
     - CollectionKit
+    - CoreStore
     - Reveal-SDK
 
 SPEC CHECKSUMS:
   CollectionKit: 8f01e7629185bb81072c4aa734d105df5c2d1c8b
+  CoreStore: 497ade3103f1ffd95d09c2658f9008d10c7d3082
   Reveal-SDK: 685ccb1f3cdb0b1d2926ec0b29f0eeb43d2240a3
 
-PODFILE CHECKSUM: cd88bc11626f4de2f5be8a8c6b5d4565634d8749
+PODFILE CHECKSUM: 184164e3026fc3c7c11f0f9405d296a6b13a9e86
 
 COCOAPODS: 1.11.3

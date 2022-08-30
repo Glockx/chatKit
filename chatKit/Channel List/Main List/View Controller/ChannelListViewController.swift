@@ -68,6 +68,8 @@ class ChannelListViewController: UIViewController {
 
         // Set Navigation Title
         title = "Chats"
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self.viewModel, action: #selector(self.viewModel.addButtonClicked))
     }
 
     // MARK: - viewWillAppear

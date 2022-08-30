@@ -7,7 +7,9 @@
 
 import CollectionKit
 import Combine
+import CoreStore
 import Foundation
+import LoremSwiftum
 
 class ChannelListViewModel {
     // MARK: - CPI
@@ -69,12 +71,6 @@ class ChannelListViewModel {
     // MARK: - INIT
 
     init() {
-        // Placeholder Channels
-        for _ in 0 ..< 20 {
-            channels.append(.init())
-        }
-        collectionDataSource.data = channels
-
         // Init Provider
         collectionProvider = BasicProvider(dataSource: collectionDataSource, viewSource: collectionViewSource, sizeSource: collectionSizeSource, layout: FlowLayout(spacing: 5).inset(by: .init(top: 10, left: 0, bottom: 10, right: 0)), animator: FadeAnimator(), tapHandler: tapHandler)
 
@@ -95,6 +91,15 @@ class ChannelListViewModel {
                 // Reload Provider
                 self.collectionProvider.reloadData()
             }.store(in: &cancellables)
+    }
+
+    // MARK: - Navigation Bar Add Button Clicked
+
+    /// Navigation Bar Add Button Clicked
+    @objc func addButtonClicked() {
+        print("clicked")
+
+        ChatStorageService.shared.channelTransactionService.addChannel(username: Lorem.firstName)
     }
 
     // MARK: - Push To Chat Controller

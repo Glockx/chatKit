@@ -7,6 +7,7 @@
 
 import Foundation
 import LoremSwiftum
+import CoreStore
 
 /// Message Owner Details Model
 public struct OwnerDetailsModel: Equatable, Hashable {

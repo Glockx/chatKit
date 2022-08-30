@@ -6,9 +6,14 @@ target 'chatKit' do
   use_frameworks!
 
   # Pods for chatKit
+
+#UI
 pod "CollectionKit"
 
 #Utility
 pod 'Reveal-SDK', :configurations => ['Debug']
+
+# Core Data
+pod 'CoreStore', '~> 8.0'
 
 end
