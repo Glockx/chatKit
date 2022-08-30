@@ -44,13 +44,13 @@ class ChannelTransactionService {
         dataStack.perform(asynchronous: { transaction in
 
             // Create Opponent
-            let opponent = transaction.create(Into<ChatV1.ChannelOwnerStorageModel>())
+            let opponent = transaction.create(Into<ChannelOpponentModel>())
             // Set Username
             opponent.username = username
             opponent.profileImage = profileImage
 
             // Create Channel
-            let channel = transaction.create(Into<ChatV1.ChannelStorageModel>())
+            let channel = transaction.create(Into<ChannelModel>())
             channel.opponentUser = opponent
 
         }, sourceIdentifier: TransactionSource.add) { result in
@@ -68,12 +68,12 @@ class ChannelTransactionService {
 
     /// Fetch All Chat Channel
     /// - Returns: Array of ChannelMainModel
-    func getAllChannels() -> [ChatV1.ChannelStorageModel] {
+    func getAllChannels() -> [ChannelModel] {
         // Make Sure Channel Storage Has Set Successfully
         guard ChatService.shared.hasSetChatStorage else { return [] }
 
         do {
-            let items = try dataStack.fetchAll(From<ChatV1.ChannelStorageModel>())
+            let items = try dataStack.fetchAll(From<ChannelModel>())
             return items
 
         } catch {

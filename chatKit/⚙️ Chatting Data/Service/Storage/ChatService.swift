@@ -13,12 +13,6 @@ import Foundation
 class ChatService: NSObject {
     // MARK: - Typealias
 
-    /// Current Channel Storage
-    typealias ChannelStorage = ChatV1.ChannelStorageModel
-
-    /// Current Owner Storage
-    typealias OwnerStorage = ChatV1.ChannelOwnerStorageModel
-
     // MARK: - Variables
 
     /// Shared Instance Of Chat Storage Service
@@ -34,8 +28,8 @@ class ChatService: NSObject {
     let dataStack = DataStack(CoreStoreSchema(
         modelVersion: "V1",
         entities: [
-            Entity<ChannelStorage>("Chats"),
-            Entity<OwnerStorage>("Opponents"),
+            Entity<ChannelModel>("Chats"),
+            Entity<ChannelOpponentModel>("Opponents"),
         ]
     ), migrationChain: ["V1"])
 

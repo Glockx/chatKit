@@ -171,7 +171,7 @@ class CLChannelCellView: UIView, CollectionViewReusableView {
 
     /// Configure Details Of Cell With Given Channel Model
     /// - Parameter model: Channel Model
-    func configureModel(model: ChatV1.ChannelStorageModel) {
+    func configureModel(model: ChannelModel) {
         // Set Profile Image
         if let imageString = model.opponentUser?.profileImage, let imageURL = URL(string: imageString) {
             // Set Image

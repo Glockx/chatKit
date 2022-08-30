@@ -15,22 +15,22 @@ class ChannelListViewModel {
     // MARK: - CPI
 
     // Collection Provider
-    var collectionProvider: BasicProvider<ChatV1.ChannelStorageModel, CLChannelCellView>!
+    var collectionProvider: BasicProvider<ChannelModel, CLChannelCellView>!
 
     // Collection Main Data Source
-    var collectionDataSource = ArrayDataSource(data: [ChatV1.ChannelStorageModel]()) { _, data in
+    var collectionDataSource = ArrayDataSource(data: [ChannelModel]()) { _, data in
         data.id
     }
 
     // Provider Size Source
-    var collectionSizeSource = { (_: Int, _: ChatV1.ChannelStorageModel, collectionSize: CGSize) -> CGSize in
+    var collectionSizeSource = { (_: Int, _: ChannelModel, collectionSize: CGSize) -> CGSize in
         .init(width: collectionSize.width, height: 70)
     }
 
     // Collection View Source
     lazy var collectionViewSource = ClosureViewSource(viewGenerator: { _, _ -> CLChannelCellView in
         CLChannelCellView(viewModel: .init())
-    }, viewUpdater: { [weak self] (cell: CLChannelCellView, model: ChatV1.ChannelStorageModel, _: Int) in
+    }, viewUpdater: { [weak self] (cell: CLChannelCellView, model: ChannelModel, _: Int) in
 
         // Add Delete Action
         var deleteAction = ChannelCellActionView(viewModel: .init(actionStyle: .destructive, action: {
@@ -50,7 +50,7 @@ class ChannelListViewModel {
     })
 
     // Collection Item Tap Handler
-    lazy var tapHandler: BasicProvider<ChatV1.ChannelStorageModel, CLChannelCellView>.TapHandler = { [weak self] context in
+    lazy var tapHandler: BasicProvider<ChannelModel, CLChannelCellView>.TapHandler = { [weak self] context in
         guard let self = self else { return }
 
         // Push To Chat Controller
@@ -66,7 +66,7 @@ class ChannelListViewModel {
     weak var parentController: ChannelListViewController!
 
     /// Channels
-    @Published var channels = [ChatV1.ChannelStorageModel]()
+    @Published var channels = [ChannelModel]()
 
     // MARK: - INIT
 
@@ -113,7 +113,7 @@ class ChannelListViewModel {
 
     // MARK: - Push To Chat Controller
 
-    func pushToChatContoller(model: ChatV1.ChannelStorageModel) {
+    func pushToChatContoller(model: ChannelModel) {
         let vc = ChatMainViewController(viewModel: .init(chatChannelModel: model))
         parentController.navigationController?.pushViewController(vc, animated: true)
     }

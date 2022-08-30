@@ -67,6 +67,7 @@
 		318567C028BDD84A00FD2A22 /* ChannelOwnerStorageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318567BF28BDD84A00FD2A22 /* ChannelOwnerStorageModel.swift */; };
 		318567C328BDD87900FD2A22 /* ChatVersionsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318567C228BDD87900FD2A22 /* ChatVersionsEnum.swift */; };
 		318567C828BDE06800FD2A22 /* ChannelTransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318567C728BDE06800FD2A22 /* ChannelTransactionService.swift */; };
+		318567CD28BDF6D500FD2A22 /* CurrentChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318567CC28BDF6D500FD2A22 /* CurrentChat.swift */; };
 		31A2ED1B28AF24A30024A1DC /* Date + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A2ED1A28AF24A30024A1DC /* Date + Extensions.swift */; };
 		31BF20AE28A0A3F000CDD58A /* LoremSwiftum in Frameworks */ = {isa = PBXBuildFile; productRef = 31BF20AD28A0A3F000CDD58A /* LoremSwiftum */; };
 		31D4F587289A45D200FDD33F /* CGSize + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4F586289A45D200FDD33F /* CGSize + Extensions.swift */; };
@@ -140,6 +141,7 @@
 		318567BF28BDD84A00FD2A22 /* ChannelOwnerStorageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelOwnerStorageModel.swift; sourceTree = "<group>"; };
 		318567C228BDD87900FD2A22 /* ChatVersionsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVersionsEnum.swift; sourceTree = "<group>"; };
 		318567C728BDE06800FD2A22 /* ChannelTransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTransactionService.swift; sourceTree = "<group>"; };
+		318567CC28BDF6D500FD2A22 /* CurrentChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentChat.swift; sourceTree = "<group>"; };
 		31A2ED1A28AF24A30024A1DC /* Date + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extensions.swift"; sourceTree = "<group>"; };
 		31D4F586289A45D200FDD33F /* CGSize + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize + Extensions.swift"; sourceTree = "<group>"; };
 		31D4F588289A494600FDD33F /* OnlyTextChatCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyTextChatCellView.swift; sourceTree = "<group>"; };
@@ -717,6 +719,7 @@
 		318567BC28BDD81900FD2A22 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				318567CB28BDF6CA00FD2A22 /* Current Chat */,
 				318567C928BDE21F00FD2A22 /* Storage */,
 				318567CA28BDE22500FD2A22 /* Channel */,
 			);
@@ -762,6 +765,14 @@
 				318567C728BDE06800FD2A22 /* ChannelTransactionService.swift */,
 			);
 			path = Channel;
+			sourceTree = "<group>";
+		};
+		318567CB28BDF6CA00FD2A22 /* Current Chat */ = {
+			isa = PBXGroup;
+			children = (
+				318567CC28BDF6D500FD2A22 /* CurrentChat.swift */,
+			);
+			path = "Current Chat";
 			sourceTree = "<group>";
 		};
 		31D4F58C289A494900FDD33F /* Only Text */ = {
@@ -973,6 +984,7 @@
 				31D4F596289A517F00FDD33F /* ComposedSizeSource.swift in Sources */,
 				318567C028BDD84A00FD2A22 /* ChannelOwnerStorageModel.swift in Sources */,
 				3161575128AE33DE004EC0DE /* NavigationController.swift in Sources */,
+				318567CD28BDF6D500FD2A22 /* CurrentChat.swift in Sources */,
 				31D4F591289A4ACB00FDD33F /* OnlyTextCellProvider.swift in Sources */,
 				314200C8289B8FFA00750B9E /* ChatLayout.swift in Sources */,
 				317D1F1728AF617300FC8B4B /* CCActionContainerView.swift in Sources */,
