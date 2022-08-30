@@ -68,10 +68,12 @@ class ChannelListViewModel {
     /// Channels
     @Published var channels = [ChannelModel]()
 
+    // Channel List Observer
+    var channelListObserve: ListPublisher<ChannelModel>!
+
     // MARK: - INIT
 
     init() {
-        // Get All Channel Items
         // Init Provider
         collectionProvider = BasicProvider(dataSource: collectionDataSource, viewSource: collectionViewSource, sizeSource: collectionSizeSource, layout: FlowLayout(spacing: 5).inset(by: .init(top: 10, left: 0, bottom: 10, right: 0)), animator: FadeAnimator(), tapHandler: tapHandler)
 
@@ -93,14 +95,32 @@ class ChannelListViewModel {
                 self.collectionProvider.reloadData()
             }.store(in: &cancellables)
 
+        // Set All Channels List For First Time
         ChatService.shared.$hasSetChatStorage
             .filter { $0 == true }
             .delay(for: 0.01, scheduler: RunLoop.current)
+            .first()
             .sink { [weak self] _ in
                 guard let self = self else { return }
                 // Get All Chat Items
                 self.collectionDataSource.data = ChatService.shared.channelTransactionService.getAllChannels()
+
+                // Start Channel Observe
+                self.startChannelObserve()
             }.store(in: &cancellables)
+    }
+
+    // MARK: - startChannelObserve
+
+    func startChannelObserve() {
+        // Channel List Observer
+        channelListObserve = ChatService.shared.dataStack.publishList(From<ChannelModel>().orderBy(.descending(\.$createdAt)))
+
+        // Add Observer
+        channelListObserve.addObserver(self, notifyInitial: false) { publisher in
+            // Set Channels
+            self.channels = publisher.snapshot.compactMap { $0.object }
+        }
     }
 
     // MARK: - Navigation Bar Add Button Clicked
@@ -116,5 +136,12 @@ class ChannelListViewModel {
     func pushToChatContoller(model: ChannelModel) {
         let vc = ChatMainViewController(viewModel: .init(chatChannelModel: model))
         parentController.navigationController?.pushViewController(vc, animated: true)
+    }
+
+    // MARK: - Deinit
+
+    deinit {
+        // Remove Channel List Observer
+        channelListObserve.removeObserver(self)
     }
 }

@@ -73,14 +73,12 @@ class ChannelTransactionService {
         guard ChatService.shared.hasSetChatStorage else { return [] }
 
         do {
-            let items = try dataStack.fetchAll(From<ChannelModel>())
+            let items = try dataStack.fetchAll(From<ChannelModel>().orderBy(.descending(\.$createdAt)))
             return items
 
         } catch {
             print(error.localizedDescription)
             return []
         }
-
-        return []
     }
 }

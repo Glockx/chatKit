@@ -298,6 +298,7 @@
 		31017398289A33420011789C /* Chat Models */ = {
 			isa = PBXGroup;
 			children = (
+				318567C128BDD86B00FD2A22 /* Chat Version 1 */,
 				310173AC289A3E850011789C /* Protocols */,
 				310173A0289A341D0011789C /* Enums */,
 				310173A3289A378F0011789C /* Models */,
@@ -494,7 +495,6 @@
 			isa = PBXGroup;
 			children = (
 				318567BC28BDD81900FD2A22 /* Service */,
-				318567C128BDD86B00FD2A22 /* Chat Version 1 */,
 			);
 			path = "⚙️ Chatting Data";
 			sourceTree = "<group>";
