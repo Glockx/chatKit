@@ -719,9 +719,9 @@
 		318567BC28BDD81900FD2A22 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				318567CB28BDF6CA00FD2A22 /* Current Chat */,
 				318567C928BDE21F00FD2A22 /* Storage */,
 				318567CA28BDE22500FD2A22 /* Channel */,
+				318567CB28BDF6CA00FD2A22 /* Current Chat */,
 			);
 			path = Service;
 			sourceTree = "<group>";

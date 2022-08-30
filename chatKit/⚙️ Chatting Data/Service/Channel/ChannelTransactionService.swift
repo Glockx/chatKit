@@ -7,6 +7,7 @@
 
 import CoreStore
 import Foundation
+import LoremSwiftum
 
 class ChannelTransactionService {
     // MARK: - TransactionSource
@@ -14,9 +15,7 @@ class ChannelTransactionService {
     enum TransactionSource {
         case add
         case delete
-        case shuffle
-        case clear
-        case refetch
+        case edit
     }
 
     // MARK: - Variables
@@ -73,12 +72,53 @@ class ChannelTransactionService {
         guard ChatService.shared.hasSetChatStorage else { return [] }
 
         do {
-            let items = try dataStack.fetchAll(From<ChannelModel>().orderBy(.descending(\.$createdAt)))
+            let items = try dataStack.fetchAll(From<ChannelModel>().orderBy([.descending(\.$latestMessageDate), .descending(\.$createdAt)]))
             return items
 
         } catch {
             print(error.localizedDescription)
             return []
+        }
+    }
+
+    // MARK: - Delete Channel
+
+    /// Delete The Channel With Given Channel ID
+    /// - Parameter id: Channel ID
+    func deleteChannel(id: String) {
+        dataStack.perform(asynchronous: { transaction in
+            // Delete Channel
+            try transaction.deleteAll(From<ChannelModel>().where { $0.$id == id })
+        }, sourceIdentifier: TransactionSource.delete) { result in
+
+            switch result {
+            case .success:
+                print("Deleted \(id) successfully")
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+
+    // MARK: - Update Channel Details
+
+    func updateChannelDetils(model: ChannelModel) {
+        dataStack.perform(asynchronous: { transaction in
+            // Get Channel
+            let channel = transaction.edit(model)
+            // Update Latest Message
+            channel?.latestMessage = Lorem.title
+            channel?.latestMessageDate = Date().timeIntervalSince1970
+            // Increase Unread Message Count
+            channel?.unreadMessageCount += 1
+
+        }, sourceIdentifier: TransactionSource.edit) { result in
+            switch result {
+            case .success:
+                print("Edited \(model.id) successfully")
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
         }
     }
 }

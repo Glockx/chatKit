@@ -42,7 +42,7 @@ class CLChannelCellView: UIView, CollectionViewReusableView {
 
     // Message Count Label
     var messageCountLabel = PaddingLabel(inset: .init(top: 2, left: 4, bottom: 2, right: 4)).then {
-        $0.font = .systemFont(ofSize: 12, weight: .regular)
+        $0.font = .monospacedDigitSystemFont(ofSize: 12, weight: .regular)
         $0.textAlignment = .center
         $0.backgroundColor = .brandMainBlue
         $0.textColor = .white
@@ -185,8 +185,16 @@ class CLChannelCellView: UIView, CollectionViewReusableView {
         usernameLabel.text = model.opponentUser?.username
 
         // Set Latest Message Date
-        if let timeString = CDateFormatter.shared.relativeFormatToMessageStyle(timeInterval: model.createdAt) {
-            dateLabel.text = timeString
+        // If There any unread message, set the latest message's creation Time
+        if model.unreadMessageCount > 0 {
+            if let latestMessageTime = model.latestMessageDate, let timeString = CDateFormatter.shared.relativeFormatToMessageStyle(timeInterval: latestMessageTime) {
+                dateLabel.text = timeString
+            }
+            // Else use Channel's creation time
+        } else {
+            if let timeString = CDateFormatter.shared.relativeFormatToMessageStyle(timeInterval: model.createdAt) {
+                dateLabel.text = timeString
+            }
         }
 
         // Set Latest Message

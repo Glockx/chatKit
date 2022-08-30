@@ -53,8 +53,11 @@ class ChannelListViewModel {
     lazy var tapHandler: BasicProvider<ChannelModel, CLChannelCellView>.TapHandler = { [weak self] context in
         guard let self = self else { return }
 
+        // Update Model
+        ChatService.shared.channelTransactionService.updateChannelDetils(model: context.data)
+
         // Push To Chat Controller
-        self.pushToChatContoller(model: context.data)
+        // self.pushToChatContoller(model: context.data)
     }
 
     // MARK: - Variables
@@ -112,9 +115,10 @@ class ChannelListViewModel {
 
     // MARK: - startChannelObserve
 
+    /// Start Channel Listening After Chat Storage System Starting
     func startChannelObserve() {
         // Channel List Observer
-        channelListObserve = ChatService.shared.dataStack.publishList(From<ChannelModel>().orderBy(.descending(\.$createdAt)))
+        channelListObserve = ChatService.shared.dataStack.publishList(From<ChannelModel>().orderBy([.descending(\.$latestMessageDate), .descending(\.$createdAt)]))
 
         // Add Observer
         channelListObserve.addObserver(self, notifyInitial: false) { publisher in
