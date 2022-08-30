@@ -15,6 +15,10 @@ extension ChatV1 {
         @Field.Stored("id", dynamicInitialValue: { UUID().uuidString })
         var id: String
 
+        /// Created
+        @Field.Stored("createdAt", dynamicInitialValue: { Date().timeIntervalSince1970 })
+        var createdAt: TimeInterval
+
         /// Message Owner
         @Field.Relationship("opponentUser")
         var opponentUser: ChannelOwnerStorageModel?

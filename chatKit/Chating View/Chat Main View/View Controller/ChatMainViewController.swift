@@ -59,7 +59,7 @@ class ChatMainViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
 
         // Navigation Title
-        title = "\(viewModel.chatChannelModel.opponentUser.username)"
+        title = "\(viewModel.chatChannelModel.opponentUser?.username)"
     }
 
     // MARK: - Deinit

@@ -171,9 +171,9 @@ class CLChannelCellView: UIView, CollectionViewReusableView {
 
     /// Configure Details Of Cell With Given Channel Model
     /// - Parameter model: Channel Model
-    func configureModel(model: ChannelMainModel) {
+    func configureModel(model: ChatV1.ChannelStorageModel) {
         // Set Profile Image
-        if let imageString = model.opponentUser.profileImage, let imageURL = URL(string: imageString) {
+        if let imageString = model.opponentUser?.profileImage, let imageURL = URL(string: imageString) {
             // Set Image
             profileImageView.kf.setImage(with: imageURL, options: [.processor(DownsamplingImageProcessor(size: .init(width: 100, height: 100))), .scaleFactor(UIScreen.main.scale), .cacheOriginalImage, .transition(.fade(0.3))], completionHandler: nil)
         } else {
@@ -182,10 +182,10 @@ class CLChannelCellView: UIView, CollectionViewReusableView {
         }
 
         // Set Username
-        usernameLabel.text = model.opponentUser.username
+        usernameLabel.text = model.opponentUser?.username
 
         // Set Latest Message Date
-        if let messageDate = model.latestMessageDate, let timeString = CDateFormatter.shared.relativeFormatToMessageStyle(timeInterval: messageDate) {
+        if let timeString = CDateFormatter.shared.relativeFormatToMessageStyle(timeInterval: model.createdAt) {
             dateLabel.text = timeString
         }
 
@@ -206,7 +206,7 @@ class CLChannelCellView: UIView, CollectionViewReusableView {
         }
 
         // Is Online Indicator
-        onlineIndicatorView.isHidden = !model.isOnline
+        onlineIndicatorView.isHidden = Bool.random()
 
         // Layout View
         layoutView()

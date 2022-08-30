@@ -46,7 +46,7 @@
 		314200D1289CF41A00750B9E /* OnlyMediaChatCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314200CF289CF41A00750B9E /* OnlyMediaChatCellViewModel.swift */; };
 		314200D7289CF54E00750B9E /* OnlyMediaCellProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314200D6289CF54E00750B9E /* OnlyMediaCellProvider.swift */; };
 		314200DA289CF74200750B9E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 314200D9289CF74200750B9E /* Kingfisher */; };
-		315C8B8B28BC9D72002989DC /* ChatStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315C8B8A28BC9D72002989DC /* ChatStorageService.swift */; };
+		315C8B8B28BC9D72002989DC /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315C8B8A28BC9D72002989DC /* ChatService.swift */; };
 		3161574828AE3328004EC0DE /* ChannelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3161574528AE3328004EC0DE /* ChannelListViewController.swift */; };
 		3161574928AE3328004EC0DE /* ChannelListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3161574628AE3328004EC0DE /* ChannelListView.swift */; };
 		3161574A28AE3328004EC0DE /* ChannelListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3161574728AE3328004EC0DE /* ChannelListViewModel.swift */; };
@@ -119,7 +119,7 @@
 		314200CE289CF41A00750B9E /* OnlyMediaChatCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyMediaChatCellView.swift; sourceTree = "<group>"; };
 		314200CF289CF41A00750B9E /* OnlyMediaChatCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyMediaChatCellViewModel.swift; sourceTree = "<group>"; };
 		314200D6289CF54E00750B9E /* OnlyMediaCellProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyMediaCellProvider.swift; sourceTree = "<group>"; };
-		315C8B8A28BC9D72002989DC /* ChatStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatStorageService.swift; sourceTree = "<group>"; };
+		315C8B8A28BC9D72002989DC /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		3161574528AE3328004EC0DE /* ChannelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelListViewController.swift; sourceTree = "<group>"; };
 		3161574628AE3328004EC0DE /* ChannelListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelListView.swift; sourceTree = "<group>"; };
 		3161574728AE3328004EC0DE /* ChannelListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelListViewModel.swift; sourceTree = "<group>"; };
@@ -751,7 +751,7 @@
 		318567C928BDE21F00FD2A22 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				315C8B8A28BC9D72002989DC /* ChatStorageService.swift */,
+				315C8B8A28BC9D72002989DC /* ChatService.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -983,7 +983,7 @@
 				317D1F1028AF5D6800FC8B4B /* ChannelCellActionView.swift in Sources */,
 				317D1F1D28AF631500FC8B4B /* PinStackView.swift in Sources */,
 				314200D1289CF41A00750B9E /* OnlyMediaChatCellViewModel.swift in Sources */,
-				315C8B8B28BC9D72002989DC /* ChatStorageService.swift in Sources */,
+				315C8B8B28BC9D72002989DC /* ChatService.swift in Sources */,
 				310173AE289A3E930011789C /* MediaItem.swift in Sources */,
 				318567C328BDD87900FD2A22 /* ChatVersionsEnum.swift in Sources */,
 				31017395289A078C0011789C /* UIResponder + Extensions.swift in Sources */,

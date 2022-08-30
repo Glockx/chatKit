@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         // Crate Chat Storage
-        _ = ChatStorageService.shared
+        _ = ChatService.shared
 
         return true
     }

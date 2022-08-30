@@ -10,7 +10,7 @@ import CoreStore
 import Foundation
 
 /// The general wrapper around the chat storage system.
-class ChatStorageService: NSObject {
+class ChatService: NSObject {
     // MARK: - Typealias
 
     /// Current Channel Storage
@@ -22,7 +22,7 @@ class ChatStorageService: NSObject {
     // MARK: - Variables
 
     /// Shared Instance Of Chat Storage Service
-    static let shared = ChatStorageService()
+    static let shared = ChatService()
 
     // Channel TransactionService
     lazy var channelTransactionService = ChannelTransactionService(dataStack: dataStack)

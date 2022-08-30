@@ -70,11 +70,11 @@ class ChatMainViewModel {
     weak var parentController: UIViewController!
 
     /// Chat Channel model
-    @Published var chatChannelModel: ChannelMainModel!
+    @Published var chatChannelModel: ChatV1.ChannelStorageModel!
 
     // MARK: - INIT
 
-    init(chatChannelModel: ChannelMainModel) {
+    init(chatChannelModel: ChatV1.ChannelStorageModel) {
         // Set Channel Channel Model
         self.chatChannelModel = chatChannelModel
 

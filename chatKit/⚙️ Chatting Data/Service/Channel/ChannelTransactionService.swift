@@ -38,7 +38,7 @@ class ChannelTransactionService {
     /// - Parameter profileImage: String
     func addChannel(username: String, profileImage: String? = nil) {
         // Make Sure Channel Storage Has Set Successfully
-        guard ChatStorageService.shared.hasSetChatStorage else { return }
+        guard ChatService.shared.hasSetChatStorage else { return }
 
         // Add Channel
         dataStack.perform(asynchronous: { transaction in
@@ -62,5 +62,25 @@ class ChannelTransactionService {
                 print(error.localizedDescription)
             }
         }
+    }
+
+    // MARK: - Get All Channel Items
+
+    /// Fetch All Chat Channel
+    /// - Returns: Array of ChannelMainModel
+    func getAllChannels() -> [ChatV1.ChannelStorageModel] {
+        // Make Sure Channel Storage Has Set Successfully
+        guard ChatService.shared.hasSetChatStorage else { return [] }
+
+        do {
+            let items = try dataStack.fetchAll(From<ChatV1.ChannelStorageModel>())
+            return items
+
+        } catch {
+            print(error.localizedDescription)
+            return []
+        }
+
+        return []
     }
 }
