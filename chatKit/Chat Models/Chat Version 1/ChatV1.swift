@@ -1,5 +1,5 @@
 //
-//  ChatVersionsEnum.swift
+//  ChatV1.swift
 //  chatKit
 //
 //  Created by Nijat Muzaffarli on 2022/08/30.

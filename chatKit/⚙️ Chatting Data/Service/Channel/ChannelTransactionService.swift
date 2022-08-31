@@ -37,7 +37,7 @@ class ChannelTransactionService {
     /// - Parameter profileImage: String
     func addChannel(username: String, profileImage: String? = nil) {
         // Make Sure Channel Storage Has Set Successfully
-        guard ChatService.shared.hasSetChatStorage else { return }
+        guard ChatStorageService.shared.hasSetChatStorage else { return }
 
         // Add Channel
         dataStack.perform(asynchronous: { transaction in
@@ -71,7 +71,7 @@ class ChannelTransactionService {
     /// - Returns: Array of ChannelMainModel
     func getAllChannels() -> [ChannelModel] {
         // Make Sure Channel Storage Has Set Successfully
-        guard ChatService.shared.hasSetChatStorage else { return [] }
+        guard ChatStorageService.shared.hasSetChatStorage else { return [] }
 
         do {
             let items = try dataStack.fetchAll(From<ChannelModel>().orderBy([.descending(\.$latestMessageDate), .descending(\.$createdAt)]))

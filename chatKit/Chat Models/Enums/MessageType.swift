@@ -5,6 +5,7 @@
 //  Created by Nijat Muzaffarli on 2022/08/03.
 //
 
+import CoreStore
 import Foundation
 
 /// ✉️ Conent Types Of The Messages.
@@ -27,4 +28,19 @@ public enum MessageContentType: CaseIterable, Equatable, Hashable {
 
     /// All Cases Of Message Content Types
     public static var allCases: [MessageContentType] = [.onlyText(text: ""), .onlyMedia(media: mockMediaItem), .mediaAndText(text: "", media: mockMediaItem), .audio, .emoji(text: "")]
+
+    init(_ object: ObjectProxy<ChatV1.MessageStorageModel>) {
+        switch object.$messageType.value {
+        case .audio:
+            self = .audio
+        case let .emoji(text: text):
+            self = .emoji(text: text)
+        case let .mediaAndText(text: text, media: media):
+            self = .mediaAndText(text: text, media: media)
+        case let .onlyMedia(media: media):
+            self = .onlyMedia(media: media)
+        case let .onlyText(text: text):
+            self = .onlyText(text: text)
+        }
+    }
 }

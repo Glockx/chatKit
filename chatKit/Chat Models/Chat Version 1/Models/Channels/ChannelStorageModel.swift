@@ -8,9 +8,9 @@
 import CoreStore
 import Foundation
 
-extension ChatV1 {
+public extension ChatV1 {
     ///  Channel Storage Model
-    public class ChannelStorageModel: CoreStoreObject {
+    class ChannelStorageModel: CoreStoreObject {
         /// Channel ID
         @Field.Stored("id", dynamicInitialValue: { UUID().uuidString })
         var id: String
@@ -18,10 +18,6 @@ extension ChatV1 {
         /// Created
         @Field.Stored("createdAt", dynamicInitialValue: { Date().timeIntervalSince1970 })
         var createdAt: TimeInterval
-
-        /// Message Owner
-        @Field.Relationship("opponentUser")
-        var opponentUser: ChannelOwnerStorageModel?
 
         /// Latest Message Date
         @Field.Stored("latestMessageDate")
@@ -34,5 +30,13 @@ extension ChatV1 {
         /// Unread Message Count
         @Field.Stored("unreadMessageCount")
         var unreadMessageCount = 0
+
+        /// Message Owner
+        @Field.Relationship("opponentUser")
+        var opponentUser: ChannelOwnerStorageModel?
+        
+        /// Message Owner
+        @Field.Relationship("messages")
+        var messages: [MessageStorageModel]
     }
 }
