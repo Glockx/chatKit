@@ -32,9 +32,13 @@ class ChannelListViewModel {
         CLChannelCellView(viewModel: .init())
     }, viewUpdater: { [weak self] (cell: CLChannelCellView, model: ChannelModel, _: Int) in
 
+        // Configure Model
+        cell.configureModel(model: model)
+        
         // Add Delete Action
         var deleteAction = ChannelCellActionView(viewModel: .init(actionStyle: .destructive, action: {
-            print("Hello")
+            // Delete Item
+            ChatService.shared.channelTransactionService.deleteChannel(id: model.id)
         }))
 
         cell.addSwipeAction(alignment: .right, action: deleteAction)
@@ -45,8 +49,6 @@ class ChannelListViewModel {
         }))
         cell.addSwipeAction(alignment: .left, action: exampleAction)
 
-        // Configure Model
-        cell.configureModel(model: model)
     })
 
     // Collection Item Tap Handler
@@ -117,7 +119,7 @@ class ChannelListViewModel {
 
     /// Start Channel Listening After Chat Storage System Starting
     func startChannelObserve() {
-        // Channel List Observer
+        // Channel List Observer and order them by latestMessageDate and Created Time
         channelListObserve = ChatService.shared.dataStack.publishList(From<ChannelModel>().orderBy([.descending(\.$latestMessageDate), .descending(\.$createdAt)]))
 
         // Add Observer

@@ -172,6 +172,9 @@ class CLChannelCellView: UIView, CollectionViewReusableView {
     /// Configure Details Of Cell With Given Channel Model
     /// - Parameter model: Channel Model
     func configureModel(model: ChannelModel) {
+        // Clear Previous Swipe Actions
+        clearSwipeActions()
+
         // Set Profile Image
         if let imageString = model.opponentUser?.profileImage, let imageURL = URL(string: imageString) {
             // Set Image
@@ -214,7 +217,7 @@ class CLChannelCellView: UIView, CollectionViewReusableView {
         }
 
         // Is Online Indicator
-        onlineIndicatorView.isHidden = Bool.random()
+        onlineIndicatorView.isHidden = true
 
         // Layout View
         layoutView()
@@ -229,6 +232,21 @@ class CLChannelCellView: UIView, CollectionViewReusableView {
     func addSwipeAction(alignment: CLChannelCellViewModel.CellActionAddAlignemnt, action: ChannelCellActionView) {
         // Pass Items To View Model
         viewModel.addCellAction(alignment: alignment, action: action)
+    }
+
+    // MARK: - Clear Previous Swipe Actions
+
+    /// Clear Previous Swip Actions
+    func clearSwipeActions() {
+        /// Restore Swipe Action
+        viewModel.cellActionSwipePosition = .regular
+        /// Remove Right Actions
+        viewModel.rightCellActions?.removeAll()
+        /// Remove Left Action
+        viewModel.leftCellActions?.removeAll()
+
+        leftActionContainer.clearActionItems()
+        rightActionContainer.clearActionItems()
     }
 
     // MARK: - swipped
@@ -347,11 +365,6 @@ class CLChannelCellView: UIView, CollectionViewReusableView {
     // MARK: - prepareForReuse
 
     func prepareForReuse() {
-        /// Restore Swipe Action
-        viewModel.cellActionSwipePosition = .regular
-        /// Remove Right Actions
-        viewModel.rightCellActions?.removeAll()
-        /// Remove Left Action
-        viewModel.leftCellActions?.removeAll()
+        clearSwipeActions()
     }
 }

@@ -51,6 +51,8 @@ class ChannelTransactionService {
             // Create Channel
             let channel = transaction.create(Into<ChannelModel>())
             channel.opponentUser = opponent
+            // Add Latest Message Date For Pushing new account to the top of the Channel list.
+            channel.latestMessageDate = Date().timeIntervalSince1970
 
         }, sourceIdentifier: TransactionSource.add) { result in
             // Transaction Result

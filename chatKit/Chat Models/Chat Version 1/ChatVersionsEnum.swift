@@ -10,4 +10,4 @@ import Foundation
 // MARK: - Chat Versions Enum
 
 /// Chat Version 1
-enum ChatV1 {}
+public enum ChatV1 {}

@@ -10,7 +10,7 @@ import Foundation
 
 extension ChatV1 {
     ///  Channel Storage Model
-    class ChannelStorageModel: CoreStoreObject {
+    public class ChannelStorageModel: CoreStoreObject {
         /// Channel ID
         @Field.Stored("id", dynamicInitialValue: { UUID().uuidString })
         var id: String

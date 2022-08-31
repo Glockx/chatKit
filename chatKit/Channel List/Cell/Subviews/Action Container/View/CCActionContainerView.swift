@@ -77,7 +77,8 @@ class CCActionContainerView: UIView {
                 guard let self = self else { return }
 
                 // Clear Previous Items
-                self.stackView.subviews.forEach { self.stackView.removeItem($0) }
+                self.stackView.iteminfos.removeAllObjects()
+                self.stackView.subviews.forEach { $0.removeFromSuperview() }
 
                 // Add Stack View Items
                 for item in actions {
@@ -85,6 +86,15 @@ class CCActionContainerView: UIView {
                     self.stackView.addItem(item).width(70).height(ratio: 1)
                 }
             }.store(in: &cancellables)
+    }
+
+    // MARK: - Clear Previous Items
+
+    /// Clear Action items
+    func clearActionItems() {
+        // Clear Previous Items
+        stackView.iteminfos.removeAllObjects()
+        stackView.subviews.forEach { $0.removeFromSuperview() }
     }
 
     // MARK: - layoutSubviews

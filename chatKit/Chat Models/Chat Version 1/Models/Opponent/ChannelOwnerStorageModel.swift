@@ -7,7 +7,6 @@
 
 import CoreStore
 import Foundation
-
 extension ChatV1 {
     /// Channel Owner Storage Model
     class ChannelOwnerStorageModel: CoreStoreObject {
