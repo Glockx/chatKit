@@ -20,13 +20,13 @@ extension ChatV1 {
         /// The Identifier Of The Message
         @Field.Stored("id", dynamicInitialValue: { UUID().uuidString })
         var id: String
-        
+
         ///  The Owner Of The Message
         @Field.Virtual("messageOwner", customGetter: { object, _ in
             MessageOwner(object)
         })
         public var owner: MessageOwner
-        
+
         /// Message Type Of Chat Content
         @Field.Virtual("messageType", customGetter: { object, _ in
             MessageContentType(object)

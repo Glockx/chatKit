@@ -201,7 +201,7 @@
 				310173722899255C0011789C /* Main View */,
 				3161574128AE3236004EC0DE /* Chating View */,
 				3161574328AE3260004EC0DE /* Channel List */,
-				315C8B8828BC9C5E002989DC /* ⚙️ Chatting Data */,
+				315C8B8828BC9C5E002989DC /* ⚙️ Chatting Services */,
 				31017398289A33420011789C /* Chat Models */,
 				31D4F599289A558700FDD33F /* Service */,
 				3101738F289A01C40011789C /* Extensions */,
@@ -495,12 +495,13 @@
 			path = Provider;
 			sourceTree = "<group>";
 		};
-		315C8B8828BC9C5E002989DC /* ⚙️ Chatting Data */ = {
+		315C8B8828BC9C5E002989DC /* ⚙️ Chatting Services */ = {
 			isa = PBXGroup;
 			children = (
 				318567BC28BDD81900FD2A22 /* Service */,
+				318567CB28BDF6CA00FD2A22 /* Chat Versioning */,
 			);
-			path = "⚙️ Chatting Data";
+			path = "⚙️ Chatting Services";
 			sourceTree = "<group>";
 		};
 		3161574128AE3236004EC0DE /* Chating View */ = {
@@ -727,7 +728,6 @@
 				318567C928BDE21F00FD2A22 /* Storage */,
 				318567D228BF1E8700FD2A22 /* Chat */,
 				318567CA28BDE22500FD2A22 /* Channel */,
-				318567CB28BDF6CA00FD2A22 /* Chat Versioning */,
 			);
 			path = Service;
 			sourceTree = "<group>";

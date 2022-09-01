@@ -21,6 +21,9 @@ class ChatStorageService: NSObject {
     // Channel TransactionService
     lazy var channelTransactionService = ChannelTransactionService(dataStack: dataStack)
 
+    // Message Service
+    lazy var chatService = ChatService(dataStack: dataStack)
+
     /// Has Chat Storage Setted
     @Published var hasSetChatStorage = false
 

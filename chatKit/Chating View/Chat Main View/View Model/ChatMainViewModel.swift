@@ -105,7 +105,7 @@ class ChatMainViewModel {
 
     // MARK: - Send Message
 
-    func sendMessage(text: String, textType: TextStringType = .text) {
+    func sendMessage(channel _: ChannelModel, text _: String, textType _: TextStringType = .text) {
 //        // Init Mocking Model
 //        let model = MessageModel(id: UUID().uuidString, owner: .owner(owner: .init(id: "7541", username: "nicat")), messageType: textType == .text ?.onlyText(text: text) : .emoji(text: text), creationDate: Date().timeIntervalSince1970, updateDate: nil)
 //
