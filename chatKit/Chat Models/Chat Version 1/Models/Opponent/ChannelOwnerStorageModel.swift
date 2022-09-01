@@ -25,5 +25,15 @@ extension ChatV1 {
         /// Profile Image
         @Field.Stored("profileImage", dynamicInitialValue: { "https://picsum.photos/seed/\(UUID().uuidString)/1000/1000" })
         var profileImage: String?
+
+        // MARK: - Init
+
+        convenience init(channel: ChannelStorageModel, id: String, username: String, profileImage: String?) {
+            self.init(asMeta: {}())
+            self.channel = channel
+            self.id = id
+            self.username = username
+            self.profileImage = profileImage
+        }
     }
 }

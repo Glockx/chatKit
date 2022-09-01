@@ -10,16 +10,19 @@ import CoreStore
 import Foundation
 
 /// The general wrapper around the chat storage system.
-class ChatService: NSObject {
+class ChatStorageService: NSObject {
     // MARK: - Typealias
 
     // MARK: - Variables
 
     /// Shared Instance Of Chat Storage Service
-    static let shared = ChatService()
+    static let shared = ChatStorageService()
 
     // Channel TransactionService
     lazy var channelTransactionService = ChannelTransactionService(dataStack: dataStack)
+
+    // Message Service
+    lazy var chatService = ChatService(dataStack: dataStack)
 
     /// Has Chat Storage Setted
     @Published var hasSetChatStorage = false
@@ -30,6 +33,7 @@ class ChatService: NSObject {
         entities: [
             Entity<ChannelModel>("Chats"),
             Entity<ChannelOpponentModel>("Opponents"),
+            Entity<ChatV1.MessageStorageModel>("Messages"),
         ]
     ), migrationChain: ["V1"])
 

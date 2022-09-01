@@ -14,7 +14,7 @@ import Foundation
 ///  3. messageType: Message Type Of Chat Content
 ///  4. creationDate: Creation Date Of The Message
 ///  5. updaetDate: Last Update Date Of The Message (Optional)
-public struct MessageModel: Hashable, Equatable, Identifiable {
+ struct MessageModel: Hashable, Equatable, Identifiable {
     /// The Identifier Of The Message
     public var id: String
 

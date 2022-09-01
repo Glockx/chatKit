@@ -153,12 +153,12 @@ class ChatTextingBarView: UIView, UITextViewDelegate {
 
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).containsOnlyEmoji {
             // Send A Simple Text Message
-            viewModel.chatMainModel.sendMessage(text: textView.text.trimmingCharacters(in: .whitespacesAndNewlines), textType: .onlyEmoji)
+            //    viewModel.chatMainModel.sendMessage(text: textView.text.trimmingCharacters(in: .whitespacesAndNewlines), textType: .onlyEmoji)
         } else {
             // MARK: - Text Only
 
             // Send A Simple Text Message
-            viewModel.chatMainModel.sendMessage(text: textView.text.trimmingCharacters(in: .whitespacesAndNewlines))
+            //  viewModel.chatMainModel.sendMessage(text: textView.text.trimmingCharacters(in: .whitespacesAndNewlines))
         }
 
         // Clear Text

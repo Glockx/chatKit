@@ -38,7 +38,7 @@ class ChannelListViewModel {
         // Add Delete Action
         var deleteAction = ChannelCellActionView(viewModel: .init(actionStyle: .destructive, action: {
             // Delete Item
-            ChatService.shared.channelTransactionService.deleteChannel(id: model.id)
+            ChatStorageService.shared.channelTransactionService.deleteChannel(id: model.id)
         }))
 
         cell.addSwipeAction(alignment: .right, action: deleteAction)
@@ -56,7 +56,7 @@ class ChannelListViewModel {
         guard let self = self else { return }
 
         // Update Model
-        ChatService.shared.channelTransactionService.updateChannelDetils(model: context.data)
+        ChatStorageService.shared.channelTransactionService.updateChannelDetils(model: context.data)
 
         // Push To Chat Controller
         // self.pushToChatContoller(model: context.data)
@@ -101,14 +101,14 @@ class ChannelListViewModel {
             }.store(in: &cancellables)
 
         // Set All Channels List For First Time
-        ChatService.shared.$hasSetChatStorage
+        ChatStorageService.shared.$hasSetChatStorage
             .filter { $0 == true }
             .delay(for: 0.01, scheduler: RunLoop.current)
             .first()
             .sink { [weak self] _ in
                 guard let self = self else { return }
                 // Get All Chat Items
-                self.collectionDataSource.data = ChatService.shared.channelTransactionService.getAllChannels()
+                self.collectionDataSource.data = ChatStorageService.shared.channelTransactionService.getAllChannels()
 
                 // Start Channel Observe
                 self.startChannelObserve()
@@ -120,7 +120,7 @@ class ChannelListViewModel {
     /// Start Channel Listening After Chat Storage System Starting
     func startChannelObserve() {
         // Channel List Observer and order them by latestMessageDate and Created Time
-        channelListObserve = ChatService.shared.dataStack.publishList(From<ChannelModel>().orderBy([.descending(\.$latestMessageDate), .descending(\.$createdAt)]))
+        channelListObserve = ChatStorageService.shared.dataStack.publishList(From<ChannelModel>().orderBy([.descending(\.$latestMessageDate), .descending(\.$createdAt)]))
 
         // Add Observer
         channelListObserve.addObserver(self, notifyInitial: false) { publisher in
@@ -134,7 +134,7 @@ class ChannelListViewModel {
     /// Navigation Bar Add Button Clicked
     @objc func addButtonClicked() {
         // Add New Chatting Channel To Storage
-        ChatService.shared.channelTransactionService.addChannel(username: Lorem.firstName)
+        ChatStorageService.shared.channelTransactionService.addChannel(username: Lorem.firstName)
     }
 
     // MARK: - Push To Chat Controller
